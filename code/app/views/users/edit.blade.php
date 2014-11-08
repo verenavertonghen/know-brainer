@@ -1,11 +1,11 @@
 @extends('layouts.default')
-@section('content')
+@section('container')
 
 <div class="container">
 {{ Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'PUT', 'files' => true]) }}
 
 
-    <img src="/{{ $user->avatar }}">
+    <img src="{{ $user->avatar }}">
     {{ Form::file('image') }}    
 
 	<div class="form-group">

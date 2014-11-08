@@ -8,16 +8,16 @@
     <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
 
     <!-- Loading Bootstrap -->
-    <link href="css/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ URL::asset('css/vendor/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Loading Flat UI -->
-    <link href="css/flat-ui.css" rel="stylesheet">
-    <link href="docs/assets/css/demo.css" rel="stylesheet">
+    <link href="{{ URL::asset('css/flat-ui.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('docs/assets/css/demo.css') }}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
 
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="{{ URL::asset('img/favicon.ico') }}">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
@@ -27,7 +27,7 @@
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-embossed" role="navigation">
-      <!--<div class="container">-->
+      <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
             <span class="sr-only">Toggle navigation</span>
@@ -56,7 +56,20 @@
             <li {{ (Request::segment(1) == 'login') ? 'class="active"' : '' }} ><a href="login">Inloggen</a></li>
           @endif
            </ul>
-</div><!-- /.navbar-collapse -->
+
+            <!--Zoekbalk-->
+            <form class="navbar-form navbar-right" action="#" role="search">
+              <div class="form-group">
+                <div class="input-group">
+                  <input class="form-control" id="navbarInput-01" type="search" placeholder="Zoeken">
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn"><span class="fui-search"></span></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+          </div><!-- /.navbar-collapse -->
                 <!--</div>-->
           </nav><!-- /navbar -->
           @yield('search')
@@ -83,12 +96,12 @@
       </div>
     </footer>
 
-    <script src="/assets/dist/js/vendor/jquery.min.js"></script>
-    <script src="/assets/dist/js/flat-ui.min.js"></script>
-    <script src="/assets/docs/assets/js/application.js"></script>
+    <script src="{{ URL::asset('js/vendor/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset('js/flat-ui.min.js') }}"></script>
+    <script src="{{ URL::asset('docs/assets/js/application.js') }}"></script>
 
     <script>
-      videojs.options.flash.swf = "/assets/dist/js/vendors/video-js.swf"
+      videojs.options.flash.swf = "{{ URL::asset('dist/js/vendors/video-js.swf') }}"
     </script>
   </body>
 </html>

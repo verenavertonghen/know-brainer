@@ -4,7 +4,7 @@ $ownprofile = false;
 ?>
 
 @extends('layouts.default')
-@section('content')
+@section('container')
 <div class="container">
 		<h2>{{ $user->username }}
 			@if($ownprofile) 
@@ -31,4 +31,5 @@ $ownprofile = false;
                 {{ Form::close() }}
 		@endif
 </div>
+<br>
 @stop

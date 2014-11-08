@@ -2,3 +2,22 @@
   background-color: #3C579E; }
 .login-form label[for=remember_me] {
   color: #7f8c8d; }
+
+.separator p:before,
+.separator p:after{
+	content: "";
+	display: inline-block;
+	height: 1px;
+	position: relative;
+	vertical-align: middle;
+	width: 40%;
+	background: #BDC3C7;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.48);
+	display: inline-block;
+	opacity: 0.58;
+}
+
+.separator p{
+	color: #BDC3C7;
+	text-align: center;
+}
