@@ -26,19 +26,20 @@
     <![endif]-->
   </head>
   <body>
-    <nav class="navbar navbar-inverse navbar-embossed palette-midnight-blue" role="navigation">
-      <div class="container">
+    <nav class="navbar navbar-inverse navbar-embossed" role="navigation">
+      <!--<div class="container">-->
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
             <span class="sr-only">Toggle navigation</span>
           </button>
           <a class="navbar-brand" href="/">Know-brainer</a>
-        </div>
-        <div class="collapse navbar-collapse" id="navbar-collapse-01">
-          <ul class="nav navbar-nav navbar-left">
-            <li><a href="over">Over ons</a></li>
-            <li><a href="opstellen">Opstellen</a></li>
-            <li><a href="overzicht">Overzicht</a></li>
+                  </div>
+                  <div class="collapse navbar-collapse" id="navbar-collapse-01">
+                    <ul class="nav navbar-nav navbar-left">
+                      <li><a href="/about">Over ons</a></li>
+                      <li><a href="/workshop/create">Opstellen</a></li>
+                      <li><a href="/workshop">Overzicht</a></li>
+
           @if(Auth::check())
           <li>
             <div class="btn-group">
@@ -55,31 +56,39 @@
             <li {{ (Request::segment(1) == 'login') ? 'class="active"' : '' }} ><a href="login">Inloggen</a></li>
           @endif
            </ul>
-           <!--Zoekbalk-->
-    <form class="navbar-form navbar-right" action="#" role="search">
-      <div class="form-group">
-        <div class="input-group">
-          <input class="form-control palette-clouds" id="navbarInput-01" type="search" placeholder="Zoeken">
-          <span class="input-group-btn">
-            <button type="submit" class="btn"><span class="fui-search"></span></button>
-          </span>
+</div><!-- /.navbar-collapse -->
+                <!--</div>-->
+          </nav><!-- /navbar -->
+          @yield('search')
+          <div class="container">
+          @yield('container')
+          </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-7">
+            <h3 class="footer-title">Know-brainer</h3>
+            <p>Volg ons op:</p>
+            <a class="footer-brand" href="http://designmodo.com" target="_blank">
+              <!--<img src="docs/assets/img/footer/logo.png" alt="Designmodo.com" />-->
+            </a>
+          </div> <!-- /col-xs-7 -->
+          <div class="col-xs-5">
+            <div class="footer-banner">
+              <h3 class="footer-title">Know-brainer</h3>
+              <p>Volg ons op:</p>
+            </div>
+          </div>
         </div>
       </div>
-    </form>
-        </div><!-- /.navbar-collapse -->
-      <!--</div>-->
-    </nav><!-- /navbar -->
-    </div>
+    </footer>
 
-
-      @yield('content')
-
-    <script src="js/vendor/jquery.min.js"></script>
-    <script src="js/flat-ui.min.js"></script>
-    <script src="docs/assets/js/application.js"></script>
+    <script src="/assets/dist/js/vendor/jquery.min.js"></script>
+    <script src="/assets/dist/js/flat-ui.min.js"></script>
+    <script src="/assets/docs/assets/js/application.js"></script>
 
     <script>
-      videojs.options.flash.swf = "dist/js/vendors/video-js.swf"
+      videojs.options.flash.swf = "/assets/dist/js/vendors/video-js.swf"
     </script>
   </body>
 </html>
