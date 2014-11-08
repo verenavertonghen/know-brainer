@@ -12,6 +12,10 @@
 */
 
 Route::get('/', 'HomeController@showWelcome');
+Route::get('/about', 'HomeController@about');
+
+
+Route::get('/workshop', 'WorkshopController@index');
 
 Route::get('/login', 'SessionController@create');
 Route::get('login/fb', 'FacebookController@login');
@@ -22,3 +26,4 @@ Route::get('/registreer', 'UserController@create');
 
 Route::resource('users', 'UserController');
 Route::resource('sessions', 'SessionController');
+Route::resource('workshops', 'WorkshopController');
