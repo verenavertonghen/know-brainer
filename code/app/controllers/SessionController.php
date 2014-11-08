@@ -38,6 +38,8 @@ class SessionController extends \BaseController {
 			'password' 	=> 'required'
 		];
 
+
+
 		$validator = Validator::make(Input::all(), $rules);
 
 		if($validator->fails()){
