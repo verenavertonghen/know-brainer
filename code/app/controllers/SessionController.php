@@ -22,6 +22,7 @@ class SessionController extends \BaseController {
 	{
 		if(Auth::check()) return Redirect::to('/');
 		return View::make('sessions.create');
+
 	}
 
 
