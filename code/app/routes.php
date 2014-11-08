@@ -11,7 +11,14 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'HomeController@showWelcome');
+
+Route::get('/login', 'SessionController@create');
+Route::get('login/fb', 'FacebookController@login');
+Route::get('login/fb/callback', 'FacebookController@fb_callback');
+Route::get('/logout', 'SessionController@destroy');
+Route::get('/registreer', 'UserController@create');
+
+
+Route::resource('users', 'UserController');
+Route::resource('sessions', 'SessionController');
