@@ -131,6 +131,19 @@ class UserController extends \BaseController {
 			}
 			else{
 				$user = $this->user->find($id);
+
+				$destinationPath = '';
+    			$filename        = '';
+
+   				if (Input::hasFile('image')) {
+        			$file            = Input::file('image');
+        			$destinationPath = 'img/uploads/avatars';
+        			$filename        = str_random(6) . '_' . $file->getClientOriginalName();
+        			$uploadSuccess   = $file->move($destinationPath, $filename);
+    				$user->avatar 	 = '/'.$destinationPath.$filename;	 
+    			}
+
+
 				$user->username = Input::get('username');
 				$user->email = Input::get('email');
 				$user->over = Input::get('over');
@@ -142,7 +155,7 @@ class UserController extends \BaseController {
 
 			$user->save();
 
-			return Redirect::to('users');
+			return Redirect::to('/');
 		
 	}
 
