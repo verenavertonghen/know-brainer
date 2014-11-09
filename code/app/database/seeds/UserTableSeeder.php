@@ -1,6 +1,6 @@
 <?php
 
-class WorkshopTableSeeder extends Seeder
+class UserTableSeeder extends Seeder
 {
 
     /**
@@ -10,14 +10,15 @@ class WorkshopTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('kb_workshops')->delete();
+        DB::table('kb_users')->delete();
 
-        Workshop::create(array('title' => 'foobar lesson',
-            'description' => 'foobar',
-            'location' => 'beetlegeuse',
-            'start_date' => DateTime::createFromFormat('d-m-Y H:i','10-12-2014 12:00'),
-            'end_date' => DateTime::createFromFormat('d-m-Y H:i','10-12-2014 15:00'),
-            'subscribers_amount' => '15'));
+        User::create(array('username' => 'testuser1',
+            'email' => 'testuser1@gmail.com',
+            'password' => 'beetlegeuse',
+            'over' => 'randomrandom',
+            'facebook' => 'https://facebook.com/randomrandom',
+            'twitter' => 'https://twitter.com/randomrandom',
+            'website' => 'https://randomrandom.be'
+            ));
     }
-
 }

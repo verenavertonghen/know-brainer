@@ -1,11 +1,25 @@
 <?php
 
-class Profile extends Eloquent {
+class Workshop extends Eloquent {
 
-	protected $table = 'kb_fb_profiles';
+	protected $table = 'kb_workshops';
+    public $timestamps = true;
+    protected $fillable = ['title', 'description', 'location','start_date','end_date','picture','subscribers_amount','fk_user'];
+
 
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('User', 'fk_user');
+    }
+
+    public function isValid($data)
+    {
+        $validation = Validator::make($data, static::$rules);
+
+        if ($validation->passes()) return true;
+
+        $this->errors = $validation->messages();
+        return false;
+
     }
 }

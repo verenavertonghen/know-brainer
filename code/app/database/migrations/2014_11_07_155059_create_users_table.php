@@ -20,9 +20,9 @@ class CreateUsersTable extends Migration {
 
 			$table->string('avatar')->default('http://turriffcaravans.co.uk/wp-content/uploads/2013/10/anon-avatar.png');
 			$table->string('over');
-			$table->string('facebook');
-			$table->string('twitter');
-			$table->string('website');
+			$table->string('facebook')->nullable();
+			$table->string('twitter')->nullable();
+			$table->string('website')->nullable();
 			$table->boolean('active')->default(1);
 
 			$table->rememberToken();

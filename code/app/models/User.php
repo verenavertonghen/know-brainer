@@ -11,7 +11,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public $messages;
 	public $timestamps = true;
-
+    protected $fillable = ['username', 'email', 'password','avatar','over','facebook','twitter','website'];
 
 	/**
 	 * The database table used by the model.
