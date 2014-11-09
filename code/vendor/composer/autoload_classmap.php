@@ -56,6 +56,7 @@ return array(
     'ClassPreloader\\Parser\\DirVisitor' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/DirVisitor.php',
     'ClassPreloader\\Parser\\FileVisitor' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/FileVisitor.php',
     'ClassPreloader\\Parser\\NodeTraverser' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/NodeTraverser.php',
+    'CreateCommentsTable' => $baseDir . '/app/database/migrations/2014_11_09_215957_create_comments_table.php',
     'CreateFbTable' => $baseDir . '/app/database/migrations/2014_11_08_003147_create_fb_table.php',
     'CreateUsersTable' => $baseDir . '/app/database/migrations/2014_11_07_155059_create_users_table.php',
     'CreateUsersWorkshopsTable' => $baseDir . '/app/database/migrations/2014_11_09_123504_create_users_workshops_table.php',

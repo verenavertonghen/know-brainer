@@ -21,3 +21,12 @@
 	color: #BDC3C7;
 	text-align: center;
 }
+
+.demologo .logo{
+	background: url(../img/logo.png) center 0 no-repeat !important;
+
+}
+
+.navbar {
+	border-radius: 0 !important;
+}
