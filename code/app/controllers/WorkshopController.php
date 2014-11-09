@@ -25,7 +25,40 @@ class WorkshopController extends BaseController
     //post action om effectief te storen
     public function store()
     {
+        $data = array();
 
+        $rules = [
+            'title' 	        => 'required',
+            'description'       => 'required',
+            'category' 	        => 'required',
+            'location' 	        => 'required',
+            'start_date'        => 'required',
+            'end_date' 	        => 'required',
+            'picture'           => '',
+            'subscribers_amount'=> 'required'
+        ];
+
+        if(! $this->workshop->isValid(Input::all(), $rules)){
+            return Redirect::back()->withInput()->withErrors($this->workshop->getMessages());
+        }
+        else{
+            $workshop = new Workshop;
+            $workshop->title = Input::get('title');
+            $workshop->description = Input::get('description');
+            $workshop->category = Input::get('category');
+            $workshop->location = Input::get('location');
+            $workshop->start_date = Input::get('start_date');
+            $workshop->end_date = Input::get('end_date');
+            $workshop->picture = Input::get('picture');
+            $workshop->subscribers_amount = Input::get('subscribers_amount');
+
+            //$data['username'] = Input::get('username');
+
+
+            $workshop->save();
+        }
+
+        return Redirect::to('/');
     }
 
     //detail pagina 1 workshop

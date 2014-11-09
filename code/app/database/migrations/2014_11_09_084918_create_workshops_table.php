@@ -18,6 +18,7 @@ class CreateWorkshopsTable extends Migration {
             //auto increment id(pk)
             $table->increments('id');
             $table->string('title');
+            $table->string('category');
             $table->text('description');
             $table->string('location');
             $table->dateTime('start_date');
