@@ -22,4 +22,9 @@ class Workshop extends Eloquent {
         return false;
 
     }
+
+    public function subscribers()
+    {
+        return $this->belongsToMany('User','kb_users_workshops','fk_workshop','fk_user');
+    }
 }

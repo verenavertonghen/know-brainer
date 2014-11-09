@@ -14,7 +14,7 @@ class UserTableSeeder extends Seeder
 
         User::create(array('username' => 'testuser1',
             'email' => 'testuser1@gmail.com',
-            'password' => 'beetlegeuse',
+            'password' => Hash::make('beetlegeuse'),
             'over' => 'randomrandom',
             'facebook' => 'https://facebook.com/randomrandom',
             'twitter' => 'https://twitter.com/randomrandom',

@@ -17,6 +17,7 @@ class WorkshopTableSeeder extends Seeder
             'location' => 'beetlegeuse',
             'start_date' => DateTime::createFromFormat('d-m-Y H:i','10-12-2014 12:00'),
             'end_date' => DateTime::createFromFormat('d-m-Y H:i','10-12-2014 15:00'),
+            'fk_user' => '1',
             'subscribers_amount' => '15'));
     }
 
