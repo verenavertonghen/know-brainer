@@ -2,10 +2,11 @@
 
 @section('container')
 
+        <h1>Bekijk alle workshops!</h1>
+
     @if($workshops->count())
         @foreach($workshops as $workshop)
         <div class="row demo-row">
-        <h1>Bekijk alle workshops!</h1>
             <div class="col-xs-9">
             <h1>Titel: {{ $workshop->title }}</h1>
             <p>Beschrijving: {{ $workshop->description }}</p>
