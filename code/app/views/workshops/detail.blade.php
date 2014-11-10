@@ -21,31 +21,30 @@
     </div>
 
     <div id="sharing">
-        <a href="#">Deel dit op Facebook</a><br><a href="mailto:?subject=Workshop:Kom%20te%20weten%20{{$workshop->title }}">Mail deze workshop</a>
+        <a href="#">Deel dit op Facebook</a>
+        <br>
+        <a href="mailto:?subject=Workshop:Kom%20te%20weten%20{{$workshop->title }}">Mail deze workshop</a>
     </div>
-    <hr>
-    <div id="workshop-user">
-        <img src="{{$workshop->user->avatar }}" height="100" style="float:left;">
-        <ul style="list-style-type:none; float:left; margin-top: -17px; width: 75%;">
-            <li><h4>{{ $workshop->user->username }}</h4></li>
-            <li>{{ $workshop->user->about }}</li>
-            <li>{{ ($workshop->user->facebook == '') ? '' : '<a href="http://www.facebook.com/'.$workshop->user->facebook.'" target="_blank" class="fb-btn btn btn-info btn-lg btn-block">Facebook</a>' }}</li>
-        </ul>
-    </div>
-    <hr>
 
-    <div id="comments">
-    <h3>Reacties</h3>
-            @if(!$comments->isEmpty())
-                @foreach($comments as $key => $value)
-                   <div id="comment">
-                      <p><img src="{{$value->user->avatar}}" width="30"> {{ $value->comment }} - <a href="/users/{{ $value->user->id }}">{{ $value->user->username }}</a> ({{ $value->created_at->format('d M Y H:i') }})</p>
-                   </div>
-                @endforeach
-            @else 
-                <p>Er heeft nog niemand een reactie geplaatst.</p>
-            @endif
+    <h1>Deelnemers</h1>
+    <div class="row">
+        <div id="workshop-user">
+        <div class="col-xs-2">
+               <img class="img-circle" src="{{$workshop->user->avatar}}" width="125px" alt=""/>
         </div>
+        <div class="col-xs-10">
+            <strong><p>{{ $workshop->user->username  }}</p></strong>
+            <p><span  class="lead">{{ $workshop->user->about }}</span>
+            <br/>
+            </p>
+            <p>{{ ($workshop->user->facebook == '') ? '' : '<a href="http://www.facebook.com/'.$workshop->user->facebook.'" target="_blank" class="fb-btn btn btn-info btn-lg btn-block">Facebook</a>' }}</p>
+        </div>
+        </div>
+    </div>
+
+
+
+    <hr>
 
     @if(Auth::check())
             {{ Form::open(array('action' => 'CommentController@store')) }}
@@ -83,9 +82,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-2">
-                    <div id="comment">
                        <img class="img-circle" src="{{$value->user->avatar}}" width="125px" alt=""/>
-                    </div>
                 </div>
                 <div class="col-xs-10">
                     <strong><a class="lead" href="/users/{{ $value->user->id }}">{{ $value->user->username }}</a></strong>
