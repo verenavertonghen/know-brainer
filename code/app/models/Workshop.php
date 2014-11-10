@@ -25,7 +25,7 @@ class Workshop extends Eloquent {
 
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('User', 'fk_user');
     }
 
     public function comments(){

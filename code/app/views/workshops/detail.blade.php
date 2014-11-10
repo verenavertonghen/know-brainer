@@ -4,7 +4,7 @@
 
     <div class="row demo-row">
         <div class="col-xs-9">
-        <h2>Kom te weten hoe je <span>{{ $workshop->title }}</span></h2>
+        <h2>Kom te weten <span>{{ $workshop->title }}</span></h2>
         <p class="lead">Beschrijving: {{ $workshop->description }}</p>
         <p><strong>Categorie: </strong>{{ $workshop->category }}</p>
         <p><strong>Locatie: </strong>{{ $workshop->location }}</p>
@@ -19,7 +19,33 @@
         <img src="{{ URL::asset('img/icons/png/Retina-Ready.png') }}" alt="Foto"/>
         </div>
     </div>
+
+    <div id="sharing">
+        <a href="#">Deel dit op Facebook</a><br><a href="mailto:?subject=Workshop:Kom%20te%20weten%20{{$workshop->title }}">Mail deze workshop</a>
+    </div>
     <hr>
+    <div id="workshop-user">
+        <img src="{{$workshop->user->avatar }}" height="100" style="float:left;">
+        <ul style="list-style-type:none; float:left; margin-top: -17px; width: 75%;">
+            <li><h4>{{ $workshop->user->username }}</h4></li>
+            <li>{{ $workshop->user->about }}</li>
+            <li>{{ ($workshop->user->facebook == '') ? '' : '<a href="http://www.facebook.com/'.$workshop->user->facebook.'" target="_blank" class="fb-btn btn btn-info btn-lg btn-block">Facebook</a>' }}</li>
+        </ul>
+    </div>
+    <hr>
+
+    <div id="comments">
+    <h3>Reacties</h3>
+            @if(!$comments->isEmpty())
+                @foreach($comments as $key => $value)
+                   <div id="comment">
+                      <p><img src="{{$value->user->avatar}}" width="30"> {{ $value->comment }} - <a href="/users/{{ $value->user->id }}">{{ $value->user->username }}</a> ({{ $value->created_at->format('d M Y H:i') }})</p>
+                   </div>
+                @endforeach
+            @else 
+                <p>Er heeft nog niemand een reactie geplaatst.</p>
+            @endif
+        </div>
 
     @if(Auth::check())
             {{ Form::open(array('action' => 'CommentController@store')) }}

@@ -24,7 +24,7 @@ $ownprofile = false;
 
 		<img src="{{ $user->avatar }}">
 		<h2>Over mij</h2>
-		<p>{{ ($user->over == '') ? (($ownprofile) ? '<i>Het is hier voorlopig vrij leeg</i> <a href="/users/'. Auth::user()->id.'/edit">Waarom voeg je niets toe?</a>' : '' ) : $user->over  }}</p>
+		<p>{{ ($user->about == '') ? (($ownprofile) ? '<i>Het is hier voorlopig vrij leeg</i> <a href="/users/'. Auth::user()->id.'/edit">Waarom voeg je niets toe?</a>' : '' ) : $user->about  }}</p>
 		<h2>Je kan me ook vinden op</h2>
 		<ul>
 			{{ ($user->facebook == '') ? '' : '<li><a href="http://www.facebook.com/'.$user->facebook.'">Facebook</a></li>' }}

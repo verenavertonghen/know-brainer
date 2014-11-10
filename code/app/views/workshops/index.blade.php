@@ -8,7 +8,7 @@
         @foreach($workshops as $workshop)
         <div class="row demo-row">
             <div class="col-xs-9">
-            <h3>Kom te weten hoe je <span>{{ $workshop->title }}</span></h3>
+            <h3>Kom te weten <span>{{ $workshop->title }}</span></h3>
             <p class="lead">Beschrijving: {{ $workshop->description }}</p>
             <a>{{ link_to("/workshop/{$workshop->id}", "Meer info") }}</a>
             </div>

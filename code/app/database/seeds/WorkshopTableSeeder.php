@@ -15,7 +15,7 @@ class WorkshopTableSeeder extends Seeder
         DB::table('kb_workshops')->insert(
             array(
                 array(
-                    'title' => 'hoe je koekjes nog lekkerder maakt',
+                    'title' => 'hoeje koekjes nog lekkerder maakt',
                     'description' => 'Leer hoe je lekkere koekjes bakt. Ik maak gebruik van een aantalunieke ingrediënten.',
                     'category' => 'koken',
                     'location' => 'Laarstraat 65 2070 Zwijndrecht',
