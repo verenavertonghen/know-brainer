@@ -28,9 +28,9 @@
     <![endif]-->
   </head>
   <body>
-    <nav class="navbar navbar-inverse navbar-embossed " role="navigation">
+    <nav class="navbar navbar-inverse navbar-embossed navbar-lg museo-heading" role="navigation">
       <div class="container">
-        <div class="navbar-header museo-heading">
+        <div class="navbar-header ">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
             <span class="sr-only">Toggle navigation</span>
           </button>
@@ -82,22 +82,22 @@
           <div class="container">
           @yield('container')
           </div> <!-- /container -->
-    <footer>
-      <div class="container">
+    <footer class="palette-sun-flower">
+      <div class="container ">
         <div class="row">
-          <div class="col-xs-7">
+          <div class="col-xs-7 ">
             <h3 class="footer-title">Know-brainer</h3>
             <p>Volg ons op:</p>
             <a class="footer-brand" href="http://designmodo.com" target="_blank">
               <!--<img src="docs/assets/img/footer/logo.png" alt="Designmodo.com" />-->
             </a>
           </div> <!-- /col-xs-7 -->
-          <div class="col-xs-5">
-            <div class="footer-banner">
+          <!--<div class="col-xs-5 ">
+            <div class="footer-banner ">
               <h3 class="footer-title">Know-brainer</h3>
               <p>Volg ons op:</p>
             </div>
-          </div>
+          </div>-->
         </div>
       </div>
     </footer>
