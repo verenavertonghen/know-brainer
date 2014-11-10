@@ -32,7 +32,8 @@ class UserTableSeeder extends Seeder
                     'facebook'  => 'randomrandom',
                     'twitter'   => 'randomrandom',
                     'website'   => 'randomrandom.be',
-                    'youtube'   => 'randomrandom'
+                    'youtube'   => 'randomrandom',
+                    'role'      => '0'
                 )
             )
         );
