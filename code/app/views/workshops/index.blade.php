@@ -2,19 +2,15 @@
 
 @section('container')
 
-        <h1>Bekijk alle workshops!</h1>
+        <h1 class="text-primary">Bekijk alle workshops!</h1>
 
     @if($workshops->count())
         @foreach($workshops as $workshop)
         <div class="row demo-row">
             <div class="col-xs-9">
-            <h1>Titel: {{ $workshop->title }}</h1>
-            <p>Beschrijving: {{ $workshop->description }}</p>
-            <p>Categorie: {{ $workshop->category }}</p>
-            <p>Locatie: {{ $workshop->location }}</p>
-            <p>Max. aantal personen: {{ $workshop->subscribers_amount }}</p>
-            <p>Start Datum en tijdstip: {{ $workshop->start_date }}</p>
-            <p>Start Datum en tijdstip: {{ $workshop->end_date }}</p>
+            <h3>Kom te weten hoe je <span>{{ $workshop->title }}</span></h3>
+            <p class="lead">Beschrijving: {{ $workshop->description }}</p>
+            <a>{{ link_to("/workshop/{$workshop->id}", "Meer info") }}</a>
             </div>
             <div class="col-xs-3">
             <img src="{{ URL::asset('img/icons/png/Retina-Ready.png') }}" alt="Foto"/>

@@ -3,14 +3,14 @@
 @section('container')
 
     <div class="row demo-row">
-    <h1>Bekijk alle workshops!</h1>
         <div class="col-xs-9">
-        <h1>Titel</h1>
-        <p>Tags/Onderwerp</p>
-        <p>Beschrijving</p>
-        <p>Locatie</p>
-        <p>Max. aantal personen</p>
-        <p>Datum en tijdstip</p>
+        <h2>Kom te weten hoe je <span>{{ $workshop->title }}</span></h2>
+        <p class="lead">Beschrijving: {{ $workshop->description }}</p>
+        <p><strong>Categorie: </strong>{{ $workshop->category }}</p>
+        <p><strong>Locatie: </strong>{{ $workshop->location }}</p>
+        <p><strong>Max. aantal personen: </strong>{{ $workshop->subscribers_amount }}</p>
+        <p><strong>Start Datum en tijdstip: </strong>{{ $workshop->start_date }}</p>
+        <p><strong>Start Datum en tijdstip: </strong>{{ $workshop->end_date }}</p>
         </div>
         <div class="col-xs-3">
         <img src="{{ URL::asset('img/icons/png/Retina-Ready.png') }}" alt="Foto"/>
