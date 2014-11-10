@@ -60,6 +60,8 @@ class UserController extends \BaseController {
 		if(! $this->user->isValid(Input::all(), $rules)){
 			return Redirect::back()->withInput()->withErrors($this->user->getMessages());
 		}
+
+
 		else{
 			$user = new User;
 			$user->username = Input::get('username');
