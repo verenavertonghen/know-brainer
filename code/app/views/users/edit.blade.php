@@ -18,7 +18,7 @@
     </div>
     <div class="form-group">
 	{{ Form::label('over', 'Over') }}
-    {{ Form::textarea('over', null, array('class' => 'form-control')) }}
+    {{ Form::textarea('about', null, array('class' => 'form-control')) }}
     </div>
     <div class="form-group">
     {{ Form::label('facebook', 'Facebook') }}

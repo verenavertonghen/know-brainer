@@ -13,7 +13,7 @@
             {{ Form::open(['route' => 'workshop.store']) }}
 
                 <div class="form-group {{ ($error) ? 'has-error' : '' }}">
-                    {{ Form::text('title','', array('class' => 'form-control login-field','placeholder' =>'Voer een titel in')) }}
+                    Komt te weten hoe {{ Form::text('title','', array('class' => 'form-control login-field','placeholder' =>'Voer een titel in')) }}
                     {{ Form::label('title', ' ', array('class' => ''))}}
                 </div>
 
