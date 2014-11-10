@@ -24,7 +24,7 @@ class WorkshopController extends BaseController
 
     public function index()
     {
-        $workshops = $this->workshop->all();
+        $workshops = $this->workshop->orderBy('created_at', 'DESC')->get();
         return View::make('workshops.index')->with('workshops', $workshops);
     }
 
@@ -53,7 +53,22 @@ class WorkshopController extends BaseController
         if (!$this->workshop->isValid(Input::all(), $rules)) {
             return Redirect::back()->withInput()->withErrors($this->workshop->getMessages());
         } else {
+
             $workshop = new Workshop;
+
+            $destinationPath = '';
+            $filename        = '';
+
+            if (Input::hasFile('image')) {
+                $file            = Input::file('image');
+                $destinationPath = 'img/uploads/workshops/';
+                $filename        = str_random(6) . '_' . $file->getClientOriginalName();
+                $uploadSuccess   = $file->move($destinationPath, $filename);
+                $workshop->picture    = '/'.$destinationPath.$filename;   
+            }
+
+
+            
             $workshop->title = Input::get('title');
             $workshop->description = Input::get('description');
             $workshop->category = Input::get('category');

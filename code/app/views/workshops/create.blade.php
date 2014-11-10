@@ -1,5 +1,5 @@
 @extends('layouts.default')
-
+@section('title', 'Workshop aanmaken')
 @section('container')
 <h1 class="text-primary">Maak een workshop</h1>
 
@@ -10,7 +10,7 @@
             <?php if($errors->any()) {
                 $error = true;
             }?>
-            {{ Form::open(['route' => 'workshop.store']) }}
+            {{ Form::open(['route' => 'workshop.store', 'files' => TRUE]) }}
 
                 <div class="form-group {{ ($error) ? 'has-error' : '' }}">
                     Komt te weten hoe {{ Form::text('title','', array('class' => 'form-control login-field','placeholder' =>'Voer een titel in')) }}
@@ -83,8 +83,7 @@
 
                 <div class="form-group {{ ($error) ? 'has-error' : '' }}">
                     <p>Voeg eventueel een afbeelding toe</p>
-                    {{ Form::text('picture','',array('class' => 'form-control login-field','placeholder' =>'')) }}
-                    {{ Form::label('picture', ' ', array('class' => '' ))}}
+                    {{ Form::file('image', '', array('form-control login-field')) }} 
                 </div>
 
                 <div class="form-group">

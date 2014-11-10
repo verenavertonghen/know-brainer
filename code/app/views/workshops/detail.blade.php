@@ -1,5 +1,5 @@
 @extends('layouts.default')
-
+@section('title', 'Workshop')
 @section('container')
 
     <div class="row demo-row">

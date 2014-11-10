@@ -1,5 +1,5 @@
 @extends('layouts.default')
-
+@section('title', 'Home')
 @section('container')
       <div class="demo-headline">
         <h1 class="demo-logo">

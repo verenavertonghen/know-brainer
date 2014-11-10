@@ -1,5 +1,5 @@
 @extends('layouts.default')
-
+@section('title', 'Alle workshops')
 @section('container')
 
         <h1 class="text-primary">Bekijk alle workshops!</h1>

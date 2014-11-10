@@ -4,6 +4,15 @@ $ownprofile = false;
 ?>
 
 @extends('layouts.default')
+
+@section('title')
+	@if($ownprofile) 
+		Mijn profiel
+	@else
+		Profiel {{ $user->username }}
+	@endif
+@stop
+
 @section('container')
 <div class="container">
 		<h2>{{ $user->username }}
