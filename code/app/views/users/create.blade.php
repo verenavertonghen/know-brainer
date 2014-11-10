@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('container')
-
+@section('title', 'Registreer')
 <h1>Registreren</h1>
 <?php $error = false; ?>
  <?php if($errors->any()) {

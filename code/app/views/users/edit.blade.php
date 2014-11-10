@@ -1,8 +1,8 @@
 @extends('layouts.default')
 @section('container')
-
+@section('title', 'Bewerk')
 <div class="container">
-{{ Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'PUT', 'files' => true]) }}
+{{ Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'PUT', 'files' => TRUE]) }}
 
 
     <img src="{{ $user->avatar }}">

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Knowbrainer</title>
+    <title>Knowbrainer  - @yield('title')</title>
     <meta name="description" content="Knowbrainer"/>
 
     <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">

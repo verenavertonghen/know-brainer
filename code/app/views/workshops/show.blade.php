@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('container')
-
+@section('title', 'Alle workshops')
 <h1>Alle workshops</h1>
 @if(!$workshops->isEmpty())
     <table class="table table-striped table-bordered">

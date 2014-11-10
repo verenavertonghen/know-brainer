@@ -1,5 +1,5 @@
 @extends('layouts.default')
-
+@section('title', 'Log in')
 @section('container')
 
 <?php $error = false; ?>

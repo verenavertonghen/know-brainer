@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('container')
-
+@section('title', 'Gebruikers')
 <h1>Alle gebruikers</h1>
 @if(!$users->isEmpty())
     <table class="table table-striped table-bordered">
