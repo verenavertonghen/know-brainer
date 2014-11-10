@@ -99,13 +99,20 @@ class UserController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		if($id == Auth::user()->id){
+		if(Auth::check()){
+			if($id == Auth::user()->id){
 			$user = User::find($id);
 			$view = View::make('users.edit')->with('user', $user);
+			}
+			else{
+				$view = Redirect::to('/');
+			}
 		}
+
 		else{
 			$view = Redirect::to('/');
 		}
+		
 		return $view;
 	}
 

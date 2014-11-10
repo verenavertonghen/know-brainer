@@ -19,6 +19,7 @@ Route::get('login/fb', 'FacebookController@login');
 Route::get('login/fb/callback', 'FacebookController@fb_callback');
 Route::get('/logout', 'SessionController@destroy');
 Route::get('/registreer', 'UserController@create');
+Route::get('/over-ons', 'HomeController@about');
 
 
 Route::resource('users', 'UserController');

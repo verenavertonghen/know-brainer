@@ -12,6 +12,7 @@ class CreateVotesTable extends Migration {
 	 */
 	public function up()
 	{
+
 		Schema::create('kb_votes', function($table)
         {
             $table->increments('id');
@@ -32,7 +33,7 @@ class CreateVotesTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('kb_votes');
 	}
 
 }

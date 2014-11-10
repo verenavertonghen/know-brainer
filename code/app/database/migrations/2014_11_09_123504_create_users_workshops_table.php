@@ -12,12 +12,13 @@ class CreateUsersWorkshopsTable extends Migration {
 	 */
 	public function up()
 	{
+		
         Schema::create('kb_users_workshops', function($table) {
             $table->increments('id');
             $table->unsignedInteger('fk_user')->unsigned();
             $table->unsignedInteger('fk_workshop')->unsigned();
-            $table->foreign('fk_user')->references('id')->on('kb_users');
-            $table->foreign('fk_workshop')->references('id')->on('kb_workshops');
+            $table->foreign('fk_user')->references('id')->on('kb_users')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('fk_workshop')->references('id')->on('kb_workshops')->onDelete('CASCADE')->onUpdate('CASCADE');
 
         });
 	}

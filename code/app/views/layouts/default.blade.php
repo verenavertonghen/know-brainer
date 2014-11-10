@@ -38,7 +38,7 @@
                   </div>
                   <div class="collapse navbar-collapse" id="navbar-collapse-01">
                     <ul class="nav navbar-nav navbar-left">
-                      <li><a href="/about">Over ons</a></li>
+                      <li {{ (Request::segment(1) == 'over-ons') ? 'class="active"' : '' }}><a href="/over-ons">Over ons</a></li>
                       <li><a href="/workshop/create">Opstellen</a></li>
                       <li><a href="/workshop">Overzicht</a></li>
 

@@ -12,13 +12,29 @@ class UserTableSeeder extends Seeder
     {
         DB::table('kb_users')->delete();
 
-        User::create(array('username' => 'testuser1',
-            'email' => 'testuser1@gmail.com',
-            'password' => Hash::make('beetlegeuse'),
-            'about' => 'randomrandom',
-            'facebook' => 'https://facebook.com/randomrandom',
-            'twitter' => 'https://twitter.com/randomrandom',
-            'website' => 'https://randomrandom.be'
-            ));
+        DB::table('kb_users')->insert(
+            array(
+                array(
+                    'username'  => 'testuser1',
+                    'email'     => 'testuser1@gmail.com',
+                    'password'  => Hash::make('beetlegeuse'),
+                    'about'     => 'randomrandom',
+                    'facebook'  => 'randomrandom',
+                    'twitter'   => 'randomrandom',
+                    'website'   => 'randomrandom.be',
+                    'youtube'   => 'randomrandom'
+                ),
+                array(
+                    'username'  => 'admin',
+                    'email'     => 'ferre.lambert@student.kdg.be',
+                    'password'  => Hash::make('admin'),
+                    'about'     => 'randomrandom',
+                    'facebook'  => 'randomrandom',
+                    'twitter'   => 'randomrandom',
+                    'website'   => 'randomrandom.be',
+                    'youtube'   => 'randomrandom'
+                )
+            )
+        );
     }
 }
