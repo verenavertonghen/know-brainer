@@ -15,7 +15,7 @@ class Comment extends Eloquent {
 		return $this->belongsTo('User');
 	}
 
-	public function post(){
+	public function workshop(){
 		return $this->belongsTo('Workshop');
 	}
 

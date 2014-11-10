@@ -19,5 +19,29 @@
         <img src="{{ URL::asset('img/icons/png/Retina-Ready.png') }}" alt="Foto"/>
         </div>
     </div>
+    <div id="comments">
+            @if(!$comments->isEmpty())
+                @foreach($comments as $key => $value)
+                   {{dd($value)}}
+                @endforeach
+            @else 
+                <p>Er heeft nog niemand een reactie geplaatst.</p>
+            @endif
+        </div>
+    @if(Auth::check())
+            {{ Form::open(array('action' => 'CommentController@store')) }}
+            
+            <div class="form-group">
+            {{ Form::label('comment', 'Voeg een reactie toe') }}
+            {{ Form::textarea('comment', Input::old('comment'), array('class' => 'form-control')) }}
+            {{ Form::hidden('fk_workshop', Request::segment(2)) }}
+            </div>
+
+            {{ Form::submit('Reageren', array('class' => 'btn btn-primary')) }}
+
+            {{ Form::close() }}
+        @else
+            <p><a href="/login">Log in</a> om een reactie toe te voegen.</p>
+        @endif
 
 @stop

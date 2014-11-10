@@ -93,7 +93,8 @@ class WorkshopController extends BaseController
     {
         $workshop = $this->workshop->find($id);
         if ($workshop) {
-            $view = View::make('workshops.detail')->with('workshop', $workshop);
+            $comments = Comment::where('fk_workshop', '=', $id)->with('user')->get();
+            $view = View::make('workshops.detail')->with('workshop', $workshop)->with('comments', $comments);
         } else {
             $view = Redirect::to('/');
         }

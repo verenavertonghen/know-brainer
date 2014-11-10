@@ -24,5 +24,6 @@ Route::get('/workshops', 'WorkshopController@all');
 
 
 Route::resource('users', 'UserController');
+Route::resource('comment', 'CommentController');
 Route::resource('sessions', 'SessionController');
 Route::resource('workshop', 'WorkshopController');

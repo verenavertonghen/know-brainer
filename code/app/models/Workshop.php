@@ -25,7 +25,11 @@ class Workshop extends Eloquent {
 
     public function user()
     {
-        return $this->belongsTo('User', 'fk_user');
+        return $this->belongsTo('User');
+    }
+
+    public function comments(){
+        return $this->hasMany('Comment');
     }
 
     public function isValid($data)
@@ -41,6 +45,6 @@ class Workshop extends Eloquent {
 
     public function subscribers()
     {
-        return $this->belongsToMany('User','kb_users_workshops','fk_workshop','fk_user');
+        return $this->hasMany('User','kb_users_workshops','fk_workshop','fk_user');
     }
 }
