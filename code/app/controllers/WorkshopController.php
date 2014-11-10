@@ -10,6 +10,18 @@ class WorkshopController extends BaseController
         $this->workshop = $workshop;
     }
 
+    public function all(){
+        if(Auth::check()){
+            
+                $workshops = $this->workshop->with('user')->paginate(1);
+                $view = View::make('workshops.show')->with('workshops', $workshops);
+        }
+        else{
+            $view = Redirect::to('/');
+        }
+        return $view;
+    }
+
     public function index()
     {
         $workshops = $this->workshop->all();
@@ -80,7 +92,7 @@ class WorkshopController extends BaseController
         $workshop = $this->workshop->find($id);
 
         //check if course owner
-        if (Auth::user()->id === $workshop->user->id) {
+        if (Auth::user()->id === $workshop->user->id || Auth::user()->role === 0) {
             //show edit form
             $view = View::make('workshops.edit')->with('workshop', $workshop);
         } else {

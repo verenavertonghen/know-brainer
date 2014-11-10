@@ -20,6 +20,7 @@ Route::get('login/fb/callback', 'FacebookController@fb_callback');
 Route::get('/logout', 'SessionController@destroy');
 Route::get('/registreer', 'UserController@create');
 Route::get('/over-ons', 'HomeController@about');
+Route::get('/workshops', 'WorkshopController@all');
 
 
 Route::resource('users', 'UserController');

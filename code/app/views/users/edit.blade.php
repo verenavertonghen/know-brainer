@@ -29,6 +29,10 @@
     {{ Form::text('twitter', null, array('class' => 'form-control')) }}
     </div>
     <div class="form-group">
+    {{ Form::label('youtube', 'Youtube') }}
+    {{ Form::text('youtube', null, array('class' => 'form-control')) }}
+    </div>
+    <div class="form-group">
     {{ Form::label('website', 'Website') }}
     {{ Form::text('website', null, array('class' => 'form-control')) }}
     </div>

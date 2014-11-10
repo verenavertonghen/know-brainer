@@ -15,8 +15,19 @@ class UserController extends \BaseController {
 	 */
 	public function index()
 	{
-		$users = $this->user->all();
-		return View::make('users.show')->with('users', $users);
+		if(Auth::check()){
+			if(Auth::user()->role === 0){
+				$users = $this->user->where('role', '=', '1')->paginate(1);
+				$view = View::make('users.show')->with('users', $users);
+			}
+			else{
+				$view = Redirect::to('/');
+			}
+		}
+		else{
+			$view = Redirect::to('/');
+		}
+		return $view;
 	}
 
 
@@ -49,6 +60,8 @@ class UserController extends \BaseController {
 		if(! $this->user->isValid(Input::all(), $rules)){
 			return Redirect::back()->withInput()->withErrors($this->user->getMessages());
 		}
+
+
 		else{
 			$user = new User;
 			$user->username = Input::get('username');
@@ -100,7 +113,7 @@ class UserController extends \BaseController {
 	public function edit($id)
 	{
 		if(Auth::check()){
-			if($id == Auth::user()->id){
+			if($id == Auth::user()->id || Auth::user()->role === 0){
 			$user = User::find($id);
 			$view = View::make('users.edit')->with('user', $user);
 			}

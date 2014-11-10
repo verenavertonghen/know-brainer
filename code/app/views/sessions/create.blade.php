@@ -3,7 +3,7 @@
 @section('container')
 
 <?php $error = false; ?>
-
+<h1>Log in</h1>
     	<div class="login-screen">
 
         <div class="login-form">
