@@ -9,8 +9,11 @@
         <p><strong>Categorie: </strong>{{ $workshop->category }}</p>
         <p><strong>Locatie: </strong>{{ $workshop->location }}</p>
         <p><strong>Max. aantal personen: </strong>{{ $workshop->subscribers_amount }}</p>
-        <p><strong>Start Datum en tijdstip: </strong>{{ $workshop->start_date }}</p>
-        <p><strong>Start Datum en tijdstip: </strong>{{ $workshop->end_date }}</p>
+        <p><strong>Wanneer: </strong>{{ $workshop->date }}</p>
+        <p><strong>Om hoe laat: </strong>{{ $workshop->time }}</p>
+        <p><strong>Duur: </strong>{{ $workshop->duration }}</p>
+        <p><strong>Benodigdheden: </strong>{{ $workshop->requirements }}</p>
+        <p><strong>Voorkennis: </strong>{{ $workshop->foreknowledge }}</p>
         </div>
         <div class="col-xs-3">
         <img src="{{ URL::asset('img/icons/png/Retina-Ready.png') }}" alt="Foto"/>

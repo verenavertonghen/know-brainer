@@ -21,9 +21,12 @@ class CreateWorkshopsTable extends Migration {
             $table->string('category');
             $table->text('description');
             $table->string('location');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
-            $table->string('picture')->nullable()->default();
+            $table->date('date');
+            $table->time('time');
+            $table->time('duration');
+            $table->string('requirements');
+            $table->string('foreknowledge');
+            $table->string('picture')->nullable()->default('default-workshop.png');
             $table->integer('subscribers_amount');
             $table->integer('fk_user')->unsigned();
             $table->foreign('fk_user')->references('id')->on('kb_users');

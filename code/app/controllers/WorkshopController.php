@@ -32,8 +32,11 @@ class WorkshopController extends BaseController
             'description'       => 'required',
             'category' 	        => 'required',
             'location' 	        => 'required',
-            'start_date'        => 'required',
-            'end_date' 	        => 'required',
+            'time'              => 'required',
+            'date' 	            => 'required',
+            'duration' 	        => 'required',
+            'requirements'      => '',
+            'foreknowledge' 	=> '',
             'picture'           => '',
             'subscribers_amount'=> 'required'
         ];
@@ -47,8 +50,11 @@ class WorkshopController extends BaseController
             $workshop->description = Input::get('description');
             $workshop->category = Input::get('category');
             $workshop->location = Input::get('location');
-            $workshop->start_date = Input::get('start_date');
-            $workshop->end_date = Input::get('end_date');
+            $workshop->date = Input::get('date');
+            $workshop->time = Input::get('time');
+            $workshop->duration = Input::get('duration');
+            $workshop->requirements = Input::get('requirements');
+            $workshop->foreknowledge = Input::get('foreknowledge');
             $workshop->picture = Input::get('picture');
             $workshop->subscribers_amount = Input::get('subscribers_amount');
             $workshop->fk_user = Auth::user()->id;

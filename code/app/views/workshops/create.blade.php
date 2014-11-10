@@ -33,18 +33,38 @@
                 </div>
 
                 <div class="form-group {{ ($error) ? 'has-error' : '' }}">
-                    {{ Form::text('start_date','',array('class' => 'form-control login-field','placeholder' =>'Kies een start tijdstip')) }}
-                    {{ Form::label('start_date', ' ', array('class' => '' ))}}
+                    {{ Form::text('date','',array('class' => 'form-control login-field','placeholder' =>'Op welke datum?')) }}
+                    {{ Form::label('date', ' ', array('class' => '' ))}}
                 </div>
 
                 <div class="form-group {{ ($error) ? 'has-error' : '' }}">
-                    {{ Form::text('end_date','',array('class' => 'form-control login-field','placeholder' =>'Kies een eind tijdstip')) }}
-                    {{ Form::label('end_date', ' ', array('class' => '' ))}}
+                    {{ Form::text('time','',array('class' => 'form-control login-field','placeholder' =>'Om hoe laat?')) }}
+                    {{ Form::label('time', ' ', array('class' => '' ))}}
+                </div>
+
+                <div class="form-group {{ ($error) ? 'has-error' : '' }}">
+                    {{ Form::text('duration','',array('class' => 'form-control login-field','placeholder' =>'Duur?')) }}
+                    {{ Form::label('duration', ' ', array('class' => '' ))}}
+                </div>
+
+                <div class="form-group {{ ($error) ? 'has-error' : '' }}">
+                    {{ Form::text('requirements','',array('class' => 'form-control login-field','placeholder' =>'Benodigheden?')) }}
+                    {{ Form::label('requirements', ' ', array('class' => '' ))}}
+                </div>
+
+                <div class="form-group {{ ($error) ? 'has-error' : '' }}">
+                    {{ Form::text('foreknowledge','',array('class' => 'form-control login-field','placeholder' =>'Is er voorkennis nodig?')) }}
+                    {{ Form::label('foreknowledge', ' ', array('class' => '' ))}}
                 </div>
 
                 <div class="form-group {{ ($error) ? 'has-error' : '' }}">
                     {{ Form::number('subscribers_amount','',array('class' => 'form-control login-field','placeholder' =>'Geeft het max. aantal deelnemers')) }}
                     {{ Form::label('subscribers_amount', ' ', array('class' => '' ))}}
+                </div>
+
+                <div class="form-group {{ ($error) ? 'has-error' : '' }}">
+                    {{ Form::text('picture','',array('class' => 'form-control login-field','placeholder' =>'Voeg eventueel een afbeelding toe')) }}
+                    {{ Form::label('picture', ' ', array('class' => '' ))}}
                 </div>
 
                 <div class="form-group">
