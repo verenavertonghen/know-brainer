@@ -7,14 +7,14 @@ class Workshop extends Eloquent {
     protected $fillable = ['title', 'description', 'location','start_date','end_date','picture','subscribers_amount','fk_user'];
 
     public static  $rules = [
-        'title' 	        => 'required',
-        'description'       => 'required',
-        'category' 	        => 'required',
-        'location' 	        => 'required',
-        'start_date'        => 'required',
-        'end_date' 	        => 'required',
-        'picture'           => '',
-        'subscribers_amount'=> 'required'
+        'title' => 'required',
+        'description' => 'required',
+        'category' => 'required',
+        'location' => 'required',
+        'time' => 'required',
+        'date' => 'required',
+        'duration' => 'required',
+        'subscribers_amount' => 'required'
     ];
 
     public $errors;
@@ -34,7 +34,7 @@ class Workshop extends Eloquent {
 
         if ($validation->passes()) return true;
 
-        $this->errors = $validation->messages();
+        $this->messages = $validation->messages();
         return false;
 
     }
