@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration {
 			$table->string('facebook')->nullable();
 			$table->string('twitter')->nullable();
 			$table->string('website')->nullable();
+			$table->string('youtube')->nullable();
 			$table->boolean('active')->default(1);
 
 			$table->rememberToken();

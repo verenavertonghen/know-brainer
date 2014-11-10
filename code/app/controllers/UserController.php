@@ -137,7 +137,7 @@ class UserController extends \BaseController {
 
    				if (Input::hasFile('image')) {
         			$file            = Input::file('image');
-        			$destinationPath = 'img/uploads/avatars';
+        			$destinationPath = 'img/uploads/avatars/';
         			$filename        = str_random(6) . '_' . $file->getClientOriginalName();
         			$uploadSuccess   = $file->move($destinationPath, $filename);
     				$user->avatar 	 = '/'.$destinationPath.$filename;	 
@@ -146,11 +146,12 @@ class UserController extends \BaseController {
 
 				$user->username = Input::get('username');
 				$user->email = Input::get('email');
-				$user->over = Input::get('over');
+				$user->about = Input::get('about');
 				
 				$user->facebook = Input::get('facebook');
 				$user->twitter = Input::get('twitter');
 				$user->website = Input::get('website');
+				$user->youtube = Input::get('youtube');
 			}
 
 			$user->save();
