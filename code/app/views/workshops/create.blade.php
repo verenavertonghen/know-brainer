@@ -1,6 +1,7 @@
 @extends('layouts.default')
 
 @section('container')
+<h1 class="text-primary">Maak een workshop</h1>
 
 <?php $error = false; ?>
 

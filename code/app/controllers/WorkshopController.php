@@ -51,14 +51,12 @@ class WorkshopController extends BaseController
             $workshop->end_date = Input::get('end_date');
             $workshop->picture = Input::get('picture');
             $workshop->subscribers_amount = Input::get('subscribers_amount');
-
-            //$data['username'] = Input::get('username');
-
+            $workshop->fk_user = Auth::user()->id;
 
             $workshop->save();
         }
 
-        return Redirect::to('/');
+        return Redirect::to('/workshop');
     }
 
     //detail pagina 1 workshop
