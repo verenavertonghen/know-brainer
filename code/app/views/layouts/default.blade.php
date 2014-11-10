@@ -28,9 +28,9 @@
     <![endif]-->
   </head>
   <body>
-    <nav class="navbar navbar-inverse navbar-embossed" role="navigation">
+    <nav class="navbar navbar-inverse navbar-embossed " role="navigation">
       <div class="container">
-        <div class="navbar-header">
+        <div class="navbar-header museo-heading">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
             <span class="sr-only">Toggle navigation</span>
           </button>

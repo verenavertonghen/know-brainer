@@ -30,3 +30,29 @@
 .navbar {
 	border-radius: 0 !important;
 }
+
+@font-face {
+    font-family: museo-heading;
+    src: url(../fonts/museo/Museo700-Regular.otf);
+}
+
+@font-face {
+    font-family: museo;
+    src: url(../fonts/museo/Museo300-Regular.otf);
+}
+
+.museo{
+	font-family: museo !important;
+}
+
+.museo-heading{
+	font-family: museo-heading !important;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: museo-heading !important;
+}
+
+strong{
+	font-family: museo-heading !important;
+}
