@@ -19,6 +19,10 @@ class Workshop extends Eloquent {
 
     public $errors;
 
+    public function getMessages(){
+        return $this->messages;
+    }
+
     public function user()
     {
         return $this->belongsTo('User', 'fk_user');

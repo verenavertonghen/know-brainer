@@ -60,6 +60,7 @@ return array(
     'CreateFbTable' => $baseDir . '/app/database/migrations/2014_11_08_003147_create_fb_table.php',
     'CreateUsersTable' => $baseDir . '/app/database/migrations/2014_11_07_155059_create_users_table.php',
     'CreateUsersWorkshopsTable' => $baseDir . '/app/database/migrations/2014_11_09_123504_create_users_workshops_table.php',
+    'CreateVotesTable' => $baseDir . '/app/database/migrations/2014_11_09_220403_create_votes_table.php',
     'CreateWorkshopsTable' => $baseDir . '/app/database/migrations/2014_11_09_084918_create_workshops_table.php',
     'Crypt_AES' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/AES.php',
     'Crypt_Base' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Base.php',

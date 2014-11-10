@@ -28,31 +28,27 @@ class WorkshopController extends BaseController
         $data = array();
 
         $rules = [
-            'title' 	        => 'required',
-            'description'       => 'required',
-            'category' 	        => 'required',
-            'location' 	        => 'required',
-            'time'              => 'required',
-            'date' 	            => 'required',
-            'duration' 	        => 'required',
-            'requirements'      => '',
-            'foreknowledge' 	=> '',
-            'picture'           => '',
-            'subscribers_amount'=> 'required'
+            'title' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+            'location' => 'required',
+            'time' => 'required',
+            'date' => 'required',
+            'duration' => 'required',
+            'subscribers_amount' => 'required'
         ];
 
-        if(! $this->workshop->isValid(Input::all(), $rules)){
+        if (!$this->workshop->isValid(Input::all(), $rules)) {
             return Redirect::back()->withInput()->withErrors($this->workshop->getMessages());
-        }
-        else{
+        } else {
             $workshop = new Workshop;
             $workshop->title = Input::get('title');
             $workshop->description = Input::get('description');
             $workshop->category = Input::get('category');
             $workshop->location = Input::get('location');
-            $workshop->date = Input::get('date');
-            $workshop->time = Input::get('time');
-            $workshop->duration = Input::get('duration');
+            $workshop->date = DateTime::createFromFormat('d/m/Y',Input::get('date'));
+            $workshop->time = DateTime::createFromFormat('H:i',Input::get('time'));
+            $workshop->duration = DateTime::createFromFormat('i',Input::get('duration'));
             $workshop->requirements = Input::get('requirements');
             $workshop->foreknowledge = Input::get('foreknowledge');
             $workshop->picture = Input::get('picture');
