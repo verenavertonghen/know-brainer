@@ -20,23 +20,12 @@
         </div>
     </div>
     <hr>
-    <div id="comments">
-    <h3>Reacties</h3>
-            @if(!$comments->isEmpty())
-                @foreach($comments as $key => $value)
-                   <div id="comment">
-                      <p><img src="{{$value->user->avatar}}" width="30"> {{ $value->comment }} - <a href="/users/{{ $value->user->id }}">{{ $value->user->username }}</a> ({{ $value->created_at->format('d M Y H:i') }})</p>
-                   </div>
-                @endforeach
-            @else 
-                <p>Er heeft nog niemand een reactie geplaatst.</p>
-            @endif
-        </div>
+
     @if(Auth::check())
             {{ Form::open(array('action' => 'CommentController@store')) }}
             
             <div class="form-group">
-            {{ Form::label('comment', 'Voeg een reactie toe') }}
+            {{ Form::label('comment', 'Laat weten wat je ervan vindt') }}
             {{ Form::textarea('comment', Input::old('comment'), array('class' => 'form-control')) }}
             {{ Form::hidden('fk_workshop', Request::segment(2)) }}
             </div>
@@ -47,5 +36,43 @@
         @else
             <p><a href="/login">Log in</a> om een reactie toe te voegen.</p>
         @endif
+
+    <div id="comments">
+        <h3>Reacties</h3>
+        @if(!$comments->isEmpty())
+            @foreach($comments as $key => $value)
+            <div class="row">
+                <div class="col-xs-2">
+                    <div id="comment">
+                       <img class="img-circle" src="{{$value->user->avatar}}" width="125px" alt=""/>
+                    </div>
+                </div>
+                <div class="col-xs-10">
+                    <a class="lead" href="/users/{{ $value->user->id }}">{{ $value->user->username }}</a>
+                    <p><strong>{{ $value->comment }}</strong>
+                    <br/>
+                    <small class="text-muted">{{ $value->created_at->format('d M Y H:i') }}</small>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">
+                    <div id="comment">
+                       <img class="img-circle" src="{{$value->user->avatar}}" width="125px" alt=""/>
+                    </div>
+                </div>
+                <div class="col-xs-10">
+                    <strong><a class="lead" href="/users/{{ $value->user->id }}">{{ $value->user->username }}</a></strong>
+                    <p><span  class="lead">{{ $value->comment }}</span>
+                    <br/>
+                    <small class="text-muted">{{ $value->created_at->format('d M Y H:i') }}</small>
+                    </p>
+                </div>
+            </div>
+            @endforeach
+        @else
+            <p>Er heeft nog niemand een reactie geplaatst.</p>
+        @endif
+    </div>
 <br>
 @stop
