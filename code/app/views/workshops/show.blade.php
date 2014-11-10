@@ -7,7 +7,7 @@
         <thead>
             <tr>
             	<td>Afbeelding</td>
-                <td>Leer hoe je ...</td>
+                <td>Kom te weten ...</td>
                 <td>Categorie</td>
                 <td>Tijdstip</td>
                 <td></td>
