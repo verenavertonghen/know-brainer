@@ -12,11 +12,11 @@ class Comment extends Eloquent {
 
 	// DEFINE RELATIONSHIPS --------------------------------------------------
 	public function user() {
-		return $this->belongsTo('User');
+		return $this->belongsTo('User', 'fk_user');
 	}
 
 	public function workshop(){
-		return $this->belongsTo('Workshop');
+		return $this->belongsTo('Workshop', 'fk_workshop');
 	}
 
 }

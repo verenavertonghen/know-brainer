@@ -19,10 +19,14 @@
         <img src="{{ URL::asset('img/icons/png/Retina-Ready.png') }}" alt="Foto"/>
         </div>
     </div>
+    <hr>
     <div id="comments">
+    <h3>Reacties</h3>
             @if(!$comments->isEmpty())
                 @foreach($comments as $key => $value)
-                   {{dd($value)}}
+                   <div id="comment">
+                      <p><img src="{{$value->user->avatar}}" width="30"> {{ $value->comment }} - <a href="/users/{{ $value->user->id }}">{{ $value->user->username }}</a> ({{ $value->created_at->format('d M Y H:i') }})</p>
+                   </div>
                 @endforeach
             @else 
                 <p>Er heeft nog niemand een reactie geplaatst.</p>
@@ -43,5 +47,5 @@
         @else
             <p><a href="/login">Log in</a> om een reactie toe te voegen.</p>
         @endif
-
+<br>
 @stop
