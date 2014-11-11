@@ -8,6 +8,7 @@
             <tr>
             	<td>Afbeelding</td>
                 <td>Kom te weten ...</td>
+                <td>Gegeven door</td>
                 <td>Categorie</td>
                 <td>Tijdstip</td>
                 <td></td>
@@ -19,6 +20,7 @@
             <tr>
             	<td><img src="{{ $value->picture }}" width="30"></td>
                 <td>{{ $value->title }}</td>
+                <td><a href="users/{{$value->user->id}}">{{ $value->user->username }}</a></td>
                 <td>{{ $value->category }}</td>
                 <td>{{ $value->date.$value->time }}</td>
 

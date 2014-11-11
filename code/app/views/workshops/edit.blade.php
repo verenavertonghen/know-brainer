@@ -10,8 +10,7 @@
 
             {{ Form::model($workshop, ['route' => ['workshop.update', $workshop->id], 'method' => 'PUT', 'files' => true]) }}
 
-                <img src="{{ $workshop->picture }}">
-                {{ Form::file('image') }}
+               
 
                 <div class="form-group {{ ($error) ? 'has-error' : '' }}">
                     Komt te weten hoe {{ Form::text('title',null, array('class' => 'form-control login-field','placeholder' =>'Voer een titel in')) }}
@@ -84,8 +83,8 @@
 
                 <div class="form-group {{ ($error) ? 'has-error' : '' }}">
                     <p>Voeg eventueel een afbeelding toe</p>
-                    {{ Form::text('picture',null,array('class' => 'form-control login-field','placeholder' =>'')) }}
-                    {{ Form::label('picture', ' ', array('class' => '' ))}}
+                     <img src="{{ $workshop->picture }}">
+                    {{ Form::file('image') }}
                 </div>
 
                 <div class="form-group">

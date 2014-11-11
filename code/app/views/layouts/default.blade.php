@@ -60,7 +60,7 @@
           </li>
                 
           @else
-            <li {{ (Request::segment(1) == 'login') ? 'class="active"' : '' }} ><a href="login">Inloggen</a></li>
+            <li {{ (Request::segment(1) == 'login') ? 'class="active"' : '' }} ><a href="/login">Inloggen</a></li>
           @endif
            </ul>
 

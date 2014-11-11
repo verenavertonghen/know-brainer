@@ -12,8 +12,8 @@
         	}?>
             {{ Form::open(['route' => 'sessions.store']) }}
             <div class="form-group {{ ($error) ? 'has-error' : '' }}">
-                {{ Form::email('email','', array('class' => 'form-control login-field','placeholder' =>'Voer uw e-mail-adres in')) }}
-            	{{ Form::label('email', ' ', array('class' => 'login-field-icon fui-user'))}}
+                {{ Form::text('username','', array('class' => 'form-control login-field','placeholder' =>'Voer uw gebruikersnaam in')) }}
+            	{{ Form::label('username', ' ', array('class' => 'login-field-icon fui-user'))}}
             </div>
 
 
@@ -32,7 +32,7 @@
             </div>
 
             <div class="form-group">
-                <a class="login-link" href="#">Wachtwoord vergeten?</a>
+                <a class="login-link" href="/wachtwoord/reset">Wachtwoord vergeten?</a>
             </div>
 
             {{ Form::close() }}

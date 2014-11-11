@@ -19,8 +19,12 @@
         <img src="{{ URL::asset('img/icons/png/Retina-Ready.png') }}" alt="Foto"/>
         </div>
     </div>
+    @if(Auth::check())
         <a href="/workshop/{{$workshop->id}}/subscribe">subscribe</a>
         <a href="/workshop/{{$workshop->id}}/unsubscribe">unsubscribe</a>
+    @else 
+        <p><a href="/login">Log in</a> of <a href="/registreer">maak een account aan</a> om deel te nemen</p>
+    @endif
 
     <div id="sharing">
         <a href="#">Deel dit op Facebook</a>
@@ -35,7 +39,7 @@
                <img class="img-circle" src="{{$workshop->user->avatar}}" width="125px" alt=""/>
         </div>
         <div class="col-xs-10">
-            <strong><p>{{ $workshop->user->username  }}</p></strong>
+            <strong><p>{{ $workshop->user->username }}</p></strong>
             <p><span  class="lead">{{ $workshop->user->about }}</span>
             <br/>
             </p>
@@ -44,6 +48,7 @@
         </div>
     </div>
 
+    @if(count($workshop->subscribers) > 0)
         <h1>Deelnemers</h1>
         @foreach($workshop->subscribers as $subscriber)
         <div class="row">
@@ -60,7 +65,8 @@
             </div>
             </div>
         </div>
-   @endforeach
+        @endforeach
+    @endif
 
 
     <hr>

@@ -17,7 +17,8 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		return View::make('index');
+		$workshops = Workshop::with('user')->limit(8)->get();
+		return View::make('index')->with('workshops', $workshops);
 	}
 
     public function about()
