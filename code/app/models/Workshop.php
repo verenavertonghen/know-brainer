@@ -45,6 +45,6 @@ class Workshop extends Eloquent {
 
     public function subscribers()
     {
-        return $this->hasMany('User','kb_users_workshops','fk_workshop','fk_user');
+        return $this->belongsToMany('User','kb_users_workshops','fk_workshop','fk_user');
     }
 }

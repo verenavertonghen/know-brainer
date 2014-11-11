@@ -10,13 +10,13 @@ class WorkshopController extends BaseController
         $this->workshop = $workshop;
     }
 
-    public function all(){
-        if(Auth::check()){
-            
-                $workshops = $this->workshop->with('user')->paginate(1);
-                $view = View::make('workshops.show')->with('workshops', $workshops);
-        }
-        else{
+    public function all()
+    {
+        if (Auth::check()) {
+
+            $workshops = $this->workshop->with('user')->paginate(1);
+            $view = View::make('workshops.show')->with('workshops', $workshops);
+        } else {
             $view = Redirect::to('/');
         }
         return $view;
@@ -57,25 +57,24 @@ class WorkshopController extends BaseController
             $workshop = new Workshop;
 
             $destinationPath = '';
-            $filename        = '';
+            $filename = '';
 
             if (Input::hasFile('image')) {
-                $file            = Input::file('image');
+                $file = Input::file('image');
                 $destinationPath = 'img/uploads/workshops/';
-                $filename        = str_random(6) . '_' . $file->getClientOriginalName();
-                $uploadSuccess   = $file->move($destinationPath, $filename);
-                $workshop->picture    = '/'.$destinationPath.$filename;   
+                $filename = str_random(6) . '_' . $file->getClientOriginalName();
+                $uploadSuccess = $file->move($destinationPath, $filename);
+                $workshop->picture = '/' . $destinationPath . $filename;
             }
 
 
-            
             $workshop->title = Input::get('title');
             $workshop->description = Input::get('description');
             $workshop->category = Input::get('category');
             $workshop->location = Input::get('location');
-            $workshop->date = DateTime::createFromFormat('d/m/Y',Input::get('date'));
-            $workshop->time = DateTime::createFromFormat('H:i',Input::get('time'));
-            $workshop->duration = DateTime::createFromFormat('i',Input::get('duration'));
+            $workshop->date = DateTime::createFromFormat('d/m/Y', Input::get('date'));
+            $workshop->time = DateTime::createFromFormat('H:i', Input::get('time'));
+            $workshop->duration = DateTime::createFromFormat('i', Input::get('duration'));
             $workshop->requirements = Input::get('requirements');
             $workshop->foreknowledge = Input::get('foreknowledge');
             $workshop->picture = Input::get('picture');
@@ -142,5 +141,38 @@ class WorkshopController extends BaseController
 
     }
 
+    //subscribe action
+    public function subscribe($id)
+    {
+        $workshop = $this->workshop->find($id);
+        //check workshop niet vol
+        if (Auth::check() && $workshop->subscribers()->count() < $workshop->subscribers_amount && $workshop->subscribers()->find(Auth::user()->id) == null && Auth::user()->id !== $workshop->user->id) {
+            $user = User::find(Auth::user()->id);
 
+            $workshop->subscribers()->attach($user);
+            $message = "Subscribed sucessfully";
+            return Redirect::back()->with($message);
+        } else {
+            $message = "Could not subscribe";
+            return Redirect::back()->with($message);
+        }
+
+    }
+
+    public function unsubscribe($id)
+    {
+        $workshop = $this->workshop->find($id);
+
+        if (Auth::check() && $workshop->subscribers()->find(Auth::user()->id) != null) {
+            $user = User::find(Auth::user()->id);
+            $workshop->subscribers()->detach($user);
+            $message = "Unsubscribed sucessfully";
+            return Redirect::back()->with($message);
+
+        } else {
+            $message = "Could not unsubscribe";
+            return Redirect::back()->with($message);
+        }
+
+    }
 }

@@ -19,6 +19,8 @@
         <img src="{{ URL::asset('img/icons/png/Retina-Ready.png') }}" alt="Foto"/>
         </div>
     </div>
+        <a href="/workshop/{{$workshop->id}}/subscribe">subscribe</a>
+        <a href="/workshop/{{$workshop->id}}/unsubscribe">unsubscribe</a>
 
     <div id="sharing">
         <a href="#">Deel dit op Facebook</a>
@@ -26,7 +28,7 @@
         <a href="mailto:?subject=Workshop:Kom%20te%20weten%20{{$workshop->title }}">Mail deze workshop</a>
     </div>
 
-    <h1>Deelnemers</h1>
+    <h1>Organisator</h1>
     <div class="row">
         <div id="workshop-user">
         <div class="col-xs-2">
@@ -42,6 +44,23 @@
         </div>
     </div>
 
+        <h1>Deelnemers</h1>
+        @foreach($workshop->subscribers as $subscriber)
+        <div class="row">
+            <div id="workshop-user">
+            <div class="col-xs-2">
+                   <img class="img-circle" src="{{$subscriber->avatar}}" width="125px" alt=""/>
+            </div>
+            <div class="col-xs-10">
+                <strong><p>{{ $subscriber->username  }}</p></strong>
+                <p><span  class="lead">{{ $subscriber->about }}</span>
+                <br/>
+                </p>
+                <p>{{ ($subscriber->facebook == '') ? '' : '<a href="http://www.facebook.com/'.$subscriber->facebook.'" target="_blank" class="fb-btn btn btn-info btn-lg btn-block">Facebook</a>' }}</p>
+            </div>
+            </div>
+        </div>
+   @endforeach
 
 
     <hr>

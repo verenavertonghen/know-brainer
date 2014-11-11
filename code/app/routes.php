@@ -22,6 +22,8 @@ Route::get('/registreer', 'UserController@create');
 Route::get('/over-ons', 'HomeController@about');
 Route::get('/workshops', 'WorkshopController@all');
 
+Route::get('/workshop/{id}/subscribe','WorkshopController@subscribe');
+Route::get('/workshop/{id}/unsubscribe','WorkshopController@unsubscribe');
 
 Route::resource('users', 'UserController');
 Route::resource('comment', 'CommentController');
