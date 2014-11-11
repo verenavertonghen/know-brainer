@@ -26,7 +26,9 @@ class WorkshopController extends BaseController
 
     public function index()
     {
-        $workshops = $this->workshop->orderBy('created_at', 'DESC')->get();
+        //$workshops = $this->workshop->orderBy('created_at', 'DESC')->get();
+        $workshops = $this->workshop->with('user')->leftJoin('kb_votes', 'kb_workshops.id', '=', 'kb_votes.fk_workshop')->select('kb_workshops.*')->orderBy('kb_workshops.created_at', 'DESC')->orderBy(DB::raw('count(kb_votes.fk_workshop)'), 'DESC')->groupBy('kb_workshops.id')->get();
+        //dd($workshops);
         return View::make('workshops.index')->with('workshops', $workshops);
     }
 
@@ -125,9 +127,10 @@ class WorkshopController extends BaseController
     public function show($id)
     {
         $workshop = $this->workshop->find($id);
-        if ($workshop) {
+       if ($workshop) {
             $comments = Comment::where('fk_workshop', '=', $id)->with('user')->get();
-            $view = View::make('workshops.detail')->with('workshop', $workshop)->with('user')->with('comments', $comments);
+            $votes = Vote::where('fk_workshop', '=', $id)->count();
+            $view = View::make('workshops.detail')->with('workshop', $workshop)->with('user')->with('comments', $comments)->with('votes', $votes);
         } else {
             $view = Redirect::to('/');
         }

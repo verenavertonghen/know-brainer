@@ -47,4 +47,8 @@ class Workshop extends Eloquent {
     {
         return $this->belongsToMany('User','kb_users_workshops','fk_workshop','fk_user');
     }
+
+    public function votes(){
+        return $this->hasMany('Vote');
+    }
 }

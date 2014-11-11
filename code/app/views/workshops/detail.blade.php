@@ -22,6 +22,11 @@
     @if(Auth::check())
         <a href="/workshop/{{$workshop->id}}/subscribe">subscribe</a>
         <a href="/workshop/{{$workshop->id}}/unsubscribe">unsubscribe</a>
+        <?php
+            $workshop_vote = Vote::where('fk_workshop', '=', $workshop->id)->where('fk_user', '=', Auth::user()->id)->get();
+            echo ($workshop_vote->isEmpty()) ? '<a href="/workshop/'.$workshop->id.'/vote">Vote </a>' : '<a href="/workshop/'.$workshop->id.'/vote">Unvote </a>';
+            echo $votes;
+            ?>
     @else 
         <p><a href="/login">Log in</a> of <a href="/registreer">maak een account aan</a> om deel te nemen</p>
     @endif

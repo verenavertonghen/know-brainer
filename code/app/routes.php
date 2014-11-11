@@ -25,6 +25,8 @@ Route::get('/workshops', 'WorkshopController@all');
 Route::get('/workshop/{id}/subscribe','WorkshopController@subscribe');
 Route::get('/workshop/{id}/unsubscribe','WorkshopController@unsubscribe');
 
+Route::get('/workshop/{workshop}/vote', 'VoteController@store');
+
 Route::resource('users', 'UserController');
 Route::resource('comment', 'CommentController');
 Route::resource('sessions', 'SessionController');
