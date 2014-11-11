@@ -219,7 +219,8 @@ class WorkshopController extends BaseController
         if (Auth::user()->id === $workshop->user->id) {
 
             $workshop->delete();
-            return Redirect::to('/');
+            $message = "Je workshop werd succesvol verwijderd";
+            return Redirect::back()->with($message);
 
         }
 

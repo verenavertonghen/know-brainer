@@ -43,7 +43,7 @@
 
                 <p>Wanneer?</p>
                 <div class="form-group {{ ($error) ? 'has-error' : '' }}">
-                    {{ Form::text('date','',array('class' => 'form-control login-field','placeholder' =>'15/02/2015')) }}
+                    {{ Form::text('date','',array('class' => 'form-control login-field','placeholder' =>'15/02/2015','id' => 'date')) }}
                     {{ Form::label('date', ' ', array('class' => 'login-field-icon fui-calendar' ))}}
                     {{ $errors->first('date', '<span class="error">:message</span>')}}
                 </div>
@@ -104,4 +104,10 @@
 @endif
     <!--</div>-->
     <br/>
+    <script>
+      $(function() {
+        $( "#date" ).datepicker();
+      });
+      </script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 @stop

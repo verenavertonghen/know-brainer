@@ -88,6 +88,7 @@ $ownprofile = false;
                                 <td>Kom te weten ...</td>
                                 <td>Categorie</td>
                                 <td>Tijdstip</td>
+                                <td></td>
                             </tr>
                         </thead>
                         <tbody>
@@ -98,7 +99,7 @@ $ownprofile = false;
                                 <td>{{ $workshop->title }}</td>
                                 <td>{{ $workshop->category }}</td>
                                 <td>{{ $workshop->date.$workshop->time }}</td>
-
+                                <td> <a href="/workshop/{{$workshop->id}}/unsubscribe">unsubscribe</a></td>
                             </tr>
                         @endforeach
                         </tbody>
