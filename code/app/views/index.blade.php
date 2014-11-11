@@ -1,6 +1,8 @@
 @extends('layouts.default')
 @section('title', 'Home')
 @section('container')
+      
+
 
       <div class="row">
 
@@ -17,7 +19,6 @@
         <div class="col-xs-4">
         <div class="demo-headline">
         <img src="{{ URL::asset('img/logo/yv1.png') }}" height="300px" alt=""/>
-
         <h1 class="demo-logo">
           <!--<div class="logo"></div>-->
           Know-brainer
