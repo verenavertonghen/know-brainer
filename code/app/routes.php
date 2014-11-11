@@ -29,3 +29,9 @@ Route::resource('users', 'UserController');
 Route::resource('comment', 'CommentController');
 Route::resource('sessions', 'SessionController');
 Route::resource('workshop', 'WorkshopController');
+
+Route::get('/wachtwoord/reset', 'RemindersController@getRemind');
+Route::controller('password', 'RemindersController');
+
+Route::get('password/reset/{token}', 'RemindersController@getReset');
+Route::post('password/reset/{token}', 'RemindersController@postReset');

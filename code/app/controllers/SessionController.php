@@ -23,7 +23,7 @@ class SessionController extends \BaseController {
 	public function store()
 	{
 		$rules = [
-			'email' 	=> 'required|email',
+			'username' 	=> 'required',
 			'password' 	=> 'required'
 		];
 
@@ -40,7 +40,7 @@ class SessionController extends \BaseController {
 			if(Input::get('remember_me') == 'yes'){
 				$remember = true;
 			} 
-			if(Auth::attempt(Input::only('email', 'password'), $remember)){
+			if(Auth::attempt(Input::only('username', 'password'), $remember)){
 				return Redirect::back();
 			}
 			else{
