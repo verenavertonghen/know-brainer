@@ -89,3 +89,9 @@ strong{
 .comment-div{
     margin: 5px 0px;
 }
+
+.workshop-item{
+	float: left;
+	width: 300px;
+	height: 200px;
+}

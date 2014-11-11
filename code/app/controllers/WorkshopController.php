@@ -15,7 +15,7 @@ class WorkshopController extends BaseController
         //check if ADMIN is logged in
         if (Auth::check()) {
             //return all workshops with pagination
-            $workshops = $this->workshop->with('user')->paginate(1);
+            $workshops = $this->workshop->with('user')->paginate(10);
             $view = View::make('workshops.show')->with('workshops', $workshops);
         }
 
@@ -202,7 +202,7 @@ class WorkshopController extends BaseController
             && $workshop->subscribers()->count() < $workshop->subscribers_amount
             && $workshop->subscribers()->find(Auth::user()->id) == null 
             && Auth::user()->id !== $workshop->user->id) {
-            
+
             $user = User::find(Auth::user()->id);
 
             $workshop->subscribers()->attach($user);

@@ -3,6 +3,7 @@
 @section('container')
 <h1 class="text-primary">Maak een workshop</h1>
 
+@if(Auth::check())
 <?php $error = false; ?>
 
     <!--<div class="login-screen">-->
@@ -94,6 +95,13 @@
 
             {{ Form::close() }}
         </div>
+@else 
+    <div>
+        <p><a href="/login">Log in</a> of <a href="/registreer">maak een account aan</a> om een workshop aan te maken.</p>
+        </div>
+
+
+@endif
     <!--</div>-->
     <br/>
 @stop
