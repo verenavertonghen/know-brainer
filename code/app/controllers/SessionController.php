@@ -3,17 +3,6 @@
 class SessionController extends \BaseController {
 
 	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
-
-
-	/**
 	 * Show the form for creating a new resource.
 	 *
 	 * @return Response
@@ -58,8 +47,6 @@ class SessionController extends \BaseController {
 				return Redirect::back()->withInput();
 			}
 		}
-
-		
 	}
 
 	/**
