@@ -91,7 +91,6 @@ class WorkshopController extends BaseController
                 $workshop->requirements = Input::get('requirements');
                 $workshop->foreknowledge = Input::get('foreknowledge');
                 $workshop->subscribers_amount = Input::get('subscribers_amount');
-                $workshop->fk_user = Auth::user()->id;
 
                 $workshop->save();
 

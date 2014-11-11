@@ -87,14 +87,20 @@
                        <img class="img-circle" src="{{$value->user->avatar}}" width="125px" alt=""/>
                     </div>
                 </div>
-                <div class="col-xs-10">
+                <div class="col-xs-9">
                     <a class="lead" href="/users/{{ $value->user->id }}">{{ $value->user->username }}</a>
                     <p><strong>{{ $value->comment }}</strong>
                     <br/>
                     <small class="text-muted">{{ $value->created_at->format('d M Y H:i') }}</small>
                     </p>
                 </div>
+                <div class="col-xs-1">
+                @if(Auth::check() && Auth::user()->role === 0)
+                    <a href="comment/{{ $value->id }}/destroy">Verwijder</a>
+                @endif
+                </div>
             </div>
+
         </div>
             @endforeach
         @else

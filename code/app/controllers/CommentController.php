@@ -65,8 +65,14 @@ class CommentController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		if(Auth::check() && Auth::user()->role === 0){
+			$comment = Comment::find($id);
+			if($comment){
+				$workshop_id = $comment->fk_workshop;
+				if ($comment->delete()) {
+					return Redirect::to('/workshop/'.$workshop_id);
+		    	}
+			}
+		}	
 	}
-
-
 }
