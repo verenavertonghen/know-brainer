@@ -2,7 +2,7 @@
 @section('title', 'Home')
 @section('container')
       <div class="demo-headline">
-        <img src="{{ URL::asset('img/logo/yv1.png') }}" height="300px" alt=""/>
+        <img class="kb-logo" src="{{ URL::asset('img/logo/yv1.png') }}" alt=""/>
         <h1 class="demo-logo">
           <!--<div class="logo"></div>-->
 

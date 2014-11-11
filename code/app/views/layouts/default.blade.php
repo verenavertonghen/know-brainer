@@ -87,18 +87,22 @@
       <div class="container ">
         <div class="row">
           <div class="col-xs-7 ">
-            <h3 class="footer-title">Know-brainer</h3>
+            <h3 class="">Know-brainer</h3>
+            <!--
             <p>Volg ons op:</p>
-            <a class="footer-brand" href="http://designmodo.com" target="_blank">
-              <!--<img src="docs/assets/img/footer/logo.png" alt="Designmodo.com" />-->
-            </a>
+            <a class="fui-facebook" href=""></a>
+            <a class="fui-twitter" href=""></a>
+            <a class="fui-youtube" href=""></a>
+            <a class="fui-vimeo" href=""></a>
+            -->
           </div> <!-- /col-xs-7 -->
-          <!--<div class="col-xs-5 ">
+          <!--
+          <div class="col-xs-5 ">
             <div class="footer-banner ">
-              <h3 class="footer-title">Know-brainer</h3>
-              <p>Volg ons op:</p>
+                <a href="/"><img class="kb-logo" src="{{ URL::asset('img/logo/yv1.png') }}" alt=""/></a>
             </div>
-          </div>-->
+          </div>
+          -->
         </div>
       </div>
     </footer>

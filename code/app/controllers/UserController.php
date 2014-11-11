@@ -49,6 +49,8 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
+
+
 		$data = array();
 
 		$rules = [
@@ -71,11 +73,13 @@ class UserController extends \BaseController {
 			$data['username'] = Input::get('username');
 
 			Mail::queue('emails.welcome', $data, function($message) use ($user){
-				$message->from('norepley@knowbrainer.be', 'Knowbrainer');
+				$message->from('noreply@knowbrainer.be', 'Knowbrainer');
 				$message->to($user->email, $user->username)->subject('Welkom bij Knowbrainer!');
 			});
 
 			$user->save();
+
+
 		}
 
 		return Redirect::to('/');
