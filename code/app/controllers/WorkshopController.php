@@ -12,13 +12,17 @@ class WorkshopController extends BaseController
 
     public function all()
     {
+        //check if ADMIN is logged in
         if (Auth::check()) {
-
+            //return all workshops with pagination
             $workshops = $this->workshop->with('user')->paginate(1);
             $view = View::make('workshops.show')->with('workshops', $workshops);
-        } else {
+        }
+
+        else {
             $view = Redirect::to('/');
         }
+        
         return $view;
     }
 
@@ -28,7 +32,7 @@ class WorkshopController extends BaseController
         return View::make('workshops.index')->with('workshops', $workshops);
     }
 
-    //form laten zien
+    
     public function create()
     {
         return View::make('workshops.create');
@@ -37,49 +41,48 @@ class WorkshopController extends BaseController
     //post action om effectief te storen
     public function store()
     {
-        $data = array();
-
         $rules = [
-            'title' => 'required',
-            'description' => 'required',
-            'category' => 'required',
-            'location' => 'required',
-            'time' => 'required',
-            'date' => 'required',
-            'duration' => 'required',
-            'subscribers_amount' => 'required'
+            'title'                 => 'required',
+            'description'           => 'required',
+            'category'              => 'required',
+            'location'              => 'required',
+            'time'                  => 'required',
+            'date'                  => 'required',
+            'duration'              => 'required',
+            'subscribers_amount'    => 'required'
         ];
 
         if (!$this->workshop->isValid(Input::all(), $rules)) {
-            return Redirect::back()->withInput()->withErrors($this->workshop->getMessages());
-        } else {
+            return Redirect::back()
+                            ->withInput()
+                            ->withErrors($this->workshop->getMessages());
+        } 
+        else {
 
             $workshop = new Workshop;
 
             $destinationPath = '';
-            $filename = '';
+            $filename        = '';
 
             if (Input::hasFile('image')) {
-                $file = Input::file('image');
-                $destinationPath = 'img/uploads/workshops/';
-                $filename = str_random(6) . '_' . $file->getClientOriginalName();
-                $uploadSuccess = $file->move($destinationPath, $filename);
-                $workshop->picture = '/' . $destinationPath . $filename;
+                $file               = Input::file('image');
+                $destinationPath    = 'img/uploads/workshops/';
+                $filename           = str_random(6) . '_' . $file->getClientOriginalName();
+                $uploadSuccess      = $file->move($destinationPath, $filename);
+                $workshop->picture  = '/'.$destinationPath.$filename;   
             }
-
-
-            $workshop->title = Input::get('title');
-            $workshop->description = Input::get('description');
-            $workshop->category = Input::get('category');
-            $workshop->location = Input::get('location');
-            $workshop->date = DateTime::createFromFormat('d/m/Y', Input::get('date'));
-            $workshop->time = DateTime::createFromFormat('H:i', Input::get('time'));
-            $workshop->duration = DateTime::createFromFormat('i', Input::get('duration'));
-            $workshop->requirements = Input::get('requirements');
-            $workshop->foreknowledge = Input::get('foreknowledge');
-            $workshop->picture = Input::get('picture');
-            $workshop->subscribers_amount = Input::get('subscribers_amount');
-            $workshop->fk_user = Auth::user()->id;
+            
+            $workshop->title                = Input::get('title');
+            $workshop->description          = Input::get('description');
+            $workshop->category             = Input::get('category');
+            $workshop->location             = Input::get('location');
+            $workshop->date                 = DateTime::createFromFormat('d/m/Y',Input::get('date'));
+            $workshop->time                 = DateTime::createFromFormat('H:i',Input::get('time'));
+            $workshop->duration             = DateTime::createFromFormat('i',Input::get('duration'));
+            $workshop->requirements         = Input::get('requirements');
+            $workshop->foreknowledge        = Input::get('foreknowledge');
+            $workshop->subscribers_amount   = Input::get('subscribers_amount');
+            $workshop->fk_user              = Auth::user()->id;
 
             $workshop->save();
         }
@@ -104,13 +107,18 @@ class WorkshopController extends BaseController
     //edit form laten zien
     public function edit($id)
     {
-        $workshop = $this->workshop->find($id);
-
+        if(Auth::check()){
         //check if course owner
-        if (Auth::user()->id === $workshop->user->id || Auth::user()->role === 0) {
-            //show edit form
-            $view = View::make('workshops.edit')->with('workshop', $workshop);
-        } else {
+            $workshop = $this->workshop->find($id);
+            if (Auth::user()->id === $workshop->user->id || Auth::user()->role === 0) {
+                //show edit form
+                $view = View::make('workshops.edit')->with('workshop', $workshop);
+            }
+            else {
+                $view = Redirect::to('/');
+            }
+        }
+        else {
             $view = Redirect::to('/');
         }
 
@@ -122,9 +130,53 @@ class WorkshopController extends BaseController
     public function update($id)
     {
         $workshop = $this->workshop->find($id);
-        if (Auth::user()->id === $workshop->user->id) {
+        if (Auth::user()->id === $workshop->user->id || Auth::user()->role === 0) {
             //check if course owner
 
+        $rules = [
+            'title'                 => 'required',
+            'description'           => 'required',
+            'category'              => 'required',
+            'location'              => 'required',
+            'time'                  => 'required',
+            'date'                  => 'required',
+            'duration'              => 'required',
+            'subscribers_amount'    => 'required'
+        ];
+
+        if (!$this->workshop->isValid(Input::all(), $rules)) {
+            return Redirect::back()->withInput()->withErrors($this->workshop->getMessages());
+        } else {
+
+            $workshop = Workshop::find($id);
+
+            $destinationPath = '';
+            $filename        = '';
+
+            if (Input::hasFile('image')) {
+                $file               = Input::file('image');
+                $destinationPath    = 'img/uploads/workshops/';
+                $filename           = str_random(6) . '_' . $file->getClientOriginalName();
+                $uploadSuccess      = $file->move($destinationPath, $filename);
+                $workshop->picture  = '/'.$destinationPath.$filename;   
+            }
+
+            $workshop->title                = Input::get('title');
+            $workshop->description          = Input::get('description');
+            $workshop->category             = Input::get('category');
+            $workshop->location             = Input::get('location');
+            $workshop->date                 = DateTime::createFromFormat('d/m/Y',Input::get('date'));
+            $workshop->time                 = DateTime::createFromFormat('H:i',Input::get('time'));
+            $workshop->duration             = DateTime::createFromFormat('i',Input::get('duration'));
+            $workshop->requirements         = Input::get('requirements');
+            $workshop->foreknowledge        = Input::get('foreknowledge');
+            $workshop->subscribers_amount   = Input::get('subscribers_amount');
+            $workshop->fk_user              = Auth::user()->id;
+
+            $workshop->save();
+        }
+
+        return Redirect::to('/workshop');
         }
     }
 
@@ -146,7 +198,11 @@ class WorkshopController extends BaseController
     {
         $workshop = $this->workshop->find($id);
         //check workshop niet vol
-        if (Auth::check() && $workshop->subscribers()->count() < $workshop->subscribers_amount && $workshop->subscribers()->find(Auth::user()->id) == null && Auth::user()->id !== $workshop->user->id) {
+        if (Auth::check() 
+            && $workshop->subscribers()->count() < $workshop->subscribers_amount
+            && $workshop->subscribers()->find(Auth::user()->id) == null 
+            && Auth::user()->id !== $workshop->user->id) {
+            
             $user = User::find(Auth::user()->id);
 
             $workshop->subscribers()->attach($user);
