@@ -40,6 +40,73 @@ $ownprofile = false;
                     {{ Form::submit('Verwijder mijn account', array('class' => 'btn btn-danger')) }}
                 {{ Form::close() }}
 		@endif
+
+		<h2>Workshops waar ik organisator van ben</h2>
+
+		@if(!$user->ownWorkshops->isEmpty())
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                    	<td>Afbeelding</td>
+                        <td>Kom te weten ...</td>
+                        <td>Categorie</td>
+                        <td>Tijdstip</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                @foreach($user->ownWorkshops as $ownWorkshop)
+                    <tr>
+                    	<td><img src="{{ $ownWorkshop->picture }}" width="30"></td>
+                        <td>{{ $ownWorkshop->title }}</td>
+                        <td>{{ $ownWorkshop->category }}</td>
+                        <td>{{ $ownWorkshop->date.$ownWorkshop->time }}</td>
+
+
+                        <td>
+                            <a class="btn btn-small btn-success" href="{{ URL::to('workshop/' . $ownWorkshop->id) }}">Details</a>
+                            <a class="btn btn-small btn-info" href="{{ URL::to('workshop/' . $ownWorkshop->id . '/edit') }}">Bewerk</a>
+                            <a class="btn btn-small btn-danger" href="{{ URL::to('workshop/' . $ownWorkshop->id . '/delete') }}">Verwijder</a>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+
+        @else
+            <p>Helaas, hebt nog geen workshops waar je organisator van bent.</p>
+        @endif
+
+        <h2>Workshops waarvoor ik ben ingeschreven</h2>
+
+        		@if(!$user->workshops->isEmpty())
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                            	<td>Afbeelding</td>
+                                <td>Kom te weten ...</td>
+                                <td>Categorie</td>
+                                <td>Tijdstip</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        @foreach($user->workshops as $workshop)
+                            <tr>
+                            	<td><img src="{{ $workshop->picture }}" width="30"></td>
+                                <td>{{ $workshop->title }}</td>
+                                <td>{{ $workshop->category }}</td>
+                                <td>{{ $workshop->date.$workshop->time }}</td>
+
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+
+                @else
+                    <p>Helaas, je bent nog niet ingeschreven voor een workshop.</p>
+                @endif
 </div>
 <br>
 @stop

@@ -14,7 +14,11 @@
                 <a>{{ link_to("/workshop/{$workshop->id}", "Meer info") }}</a>
                 </div>
                 <div class="col-xs-3">
-                <img class="workshop-img" src="{{ URL::asset('img/icons/png/Retina-Ready.png') }}" alt="Foto"/>
+                @if($workshop->picture != null)
+                <img class="workshop-img" src="{{ URL::asset($workshop->picture) }}" style="display: block;max-width:200px;max-height:200px;width: auto;height: auto; "alt="Foto"/>
+                 @else
+                <img class="workshop-img" src="{{ URL::asset('/img/icons/png/Retina-Ready.png') }}" alt="Foto"/>
+                 @endif
                 </div>
             </div>
         </div>
