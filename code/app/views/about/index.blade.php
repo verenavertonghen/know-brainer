@@ -1,9 +1,11 @@
 @extends('layouts.default')
 @section('title', 'Over ons')
 @section('container')
-<div class="demo-headline">
+      <div class="demo-headline">
+        <img src="{{ URL::asset('img/logo/yv1.png') }}" height="300px" alt=""/>
         <h1 class="demo-logo">
-          <div class="logo"></div>
+          <!--<div class="logo"></div>-->
+
           Know-brainer
         </h1>
         <p class="lead">"Iedereen kan iets, niemand kan alles..</p>

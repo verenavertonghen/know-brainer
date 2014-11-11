@@ -51,7 +51,7 @@
             
             <div class="form-group">
             {{ Form::label('comment', 'Laat weten wat je ervan vindt') }}
-            {{ Form::textarea('comment', Input::old('comment'), array('class' => 'form-control')) }}
+            {{ Form::textarea('comment', Input::old('comment'), array('class' => 'form-control','placeholder' =>'Laat weten wat je ervan vindt')) }}
             {{ Form::hidden('fk_workshop', Request::segment(2)) }}
             </div>
 
@@ -66,6 +66,7 @@
         <h3>Reacties</h3>
         @if(!$comments->isEmpty())
             @foreach($comments as $key => $value)
+        <div class="comment-div">
             <div class="row">
                 <div class="col-xs-2">
                     <div id="comment">
@@ -80,6 +81,8 @@
                     </p>
                 </div>
             </div>
+        </div>
+        <div class="comment-div">
             <div class="row">
                 <div class="col-xs-2">
                        <img class="img-circle" src="{{$value->user->avatar}}" width="125px" alt=""/>
@@ -92,6 +95,7 @@
                     </p>
                 </div>
             </div>
+        </div>
             @endforeach
         @else
             <p>Er heeft nog niemand een reactie geplaatst.</p>

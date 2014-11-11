@@ -17,8 +17,8 @@
     <!-- Custom CSS -->
     <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
 
-    <!--<link rel="shortcut icon" href="{{ URL::asset('img/favicon.ico') }}">-->
-    <link rel="shortcut icon" href="{{ URL::asset('img/logo.ico') }}">
+
+    <link rel="shortcut icon" href="{{ URL::asset('img/logo/yv1.png') }}">
 
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->

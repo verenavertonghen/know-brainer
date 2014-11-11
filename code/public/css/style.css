@@ -71,3 +71,21 @@ strong{
 .clearfix:after {
     clear: both;
 }
+
+.workshop-div{
+    height: 350px;
+    /*background: #F1C40F;*/
+    background: #ECF0F1;
+    padding: 0px 40px;
+    margin: 20px 0px;
+    border-radius: 6px;
+}
+
+.workshop-img{
+    padding: 40px;
+    padding: 40px;
+}
+
+.comment-div{
+    margin: 5px 0px;
+}
