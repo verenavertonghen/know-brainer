@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration {
 			$table->string('email')->unique();
 			$table->string('password');
 
-			$table->string('avatar')->default('http://turriffcaravans.co.uk/wp-content/uploads/2013/10/anon-avatar.png');
+			$table->string('avatar')->default('/img/uploads/avatars/default.jpg');
 			$table->string('about');
 			$table->string('facebook')->nullable();
 			$table->string('twitter')->nullable();

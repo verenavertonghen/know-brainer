@@ -16,7 +16,7 @@
                         <h3>... <span>{{ $workshop->title }}</span></h3>
                         <p class="lead">{{ $workshop->description }}</p>
                         <a>{{ link_to("/workshop/{$workshop->id}", "Meer info") }}</a>
-                        <div style="float:right"><a href="{{$workshop->user->id}}"><img src="{{$workshop->user->avatar}}" width="50" style="border-radius:50px"></a></div>
+                        <div style="float:right"><a href="/users/{{$workshop->user->id}}"><span class="museo">  {{{$workshop->user->username }}} </span><img src="{{$workshop->user->avatar}}" width="50" style="border-radius:50px"></a></div>
                         </div>
 
                         @if($workshop->picture != null)
