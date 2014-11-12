@@ -58,6 +58,7 @@
               </li>
             </ul>
 
+            @if(Auth::check())
             <div class="btn-group navbar-nav navbar-right">
               <button data-toggle="dropdown" class="btn dropdown-toggle" type="button">
                 <img src="{{ Auth::user()->avatar }}" width="30" height="30">{{{ Auth::user()->username }}}<span class="caret"></span>
@@ -72,6 +73,7 @@
                   <li><a href="/logout">Log out</a></li>
                 </ul>
             </div>
+            @endif
 
 
           </div><!-- /.navbar-collapse -->
