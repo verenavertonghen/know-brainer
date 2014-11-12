@@ -9,10 +9,9 @@
 
         <div class="login-form">
 
-		@if (Session::has('error'))
-		  Hoi{{ trans(Session::get('reason')) }}
-		@elseif (Session::has('success'))
-		  An email with the password reset has been sent.
+	@if(!Session::has('success'))
+		@if (Session::has('error') || $errors->any())
+		  <div class="msg-error">{{ (Session::get('error')) }}</div>		  
 		@endif
 		 
 		{{ Form::open(array('action' => 'RemindersController@postRemind', 'method' => 'POST')) }}
@@ -26,8 +25,11 @@
 		  <p>{{ Form::submit('Verzend', array('class' => 'btn btn-primary')) }}</p>
 		 
 		{{ Form::close() }}
-
+	@else 
+		<div class="msg-succes">
+			<p>Mail verzonden.</p>
+			<a href="/"><i>Keer terug naar de homepage</i></a></div>
+	@endif
 		</div>
 	</div>
-<br>
-	@stop
+@stop
