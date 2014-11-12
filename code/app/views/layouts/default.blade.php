@@ -25,71 +25,74 @@
   </head>
 
   <body>
-    <div id="wrapper">
-      <nav class="navbar navbar-inverse navbar-embossed navbar-lg museo-heading" role="navigation">
-        <div class="container">
-          <div class="navbar-header ">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
-              <span class="sr-only">Toggle navigation</span>
-            </button>
-            <a class="navbar-brand" href="/">Know-brainer</a>
-          </div>
-          <div class="collapse navbar-collapse" id="navbar-collapse-01">
-            <ul class="nav navbar-nav navbar-left">
-              <li {{ (Request::segment(1) == 'over-ons') ? 'class="active"' : '' }}><a href="/over-ons">Over ons</a></li>
-              <li {{ (Request::segment(1) == 'workshop') ? 'class="active"' : '' }}><a href="/workshop">Workshops</a></li>
-            @if(!Auth::check())
-              <li {{ (Request::segment(1) == 'login') ? 'class="active"' : '' }} ><a href="/login">Inloggen</a></li>
-              <li {{ (Request::segment(1) == 'registreer') ? 'class="active"' : '' }} ><a href="/registreer">Registreren</a></li>
-            @endif
-
-              <li>
-                <!--Zoekbalk-->
-                <form class="navbar-form" action="#" role="search">
-                  <div class="form-group">
-                    <div class="input-group">
-                      <input class="form-control" id="navbarInput-01" type="search" placeholder="Zoeken">
-                      <span class="input-group-btn">
-                        <button type="submit" class="btn"><span class="fui-search"></span></button>
-                      </span>
-                    </div>
-                  </div>
-                </form>
-              </li>
-            </ul>
-
-            @if(Auth::check())
-            <div class="btn-group navbar-nav navbar-right">
-              <button data-toggle="dropdown" class="btn dropdown-toggle" type="button">
-                <img src="{{ Auth::user()->avatar }}" width="30" height="30">{{{ Auth::user()->username }}}<span class="caret"></span>
-              </button>
-              <ul role="menu" class="dropdown-menu">
-                <li><a href="/users/{{ Auth::user()->id }}">Mijn profiel</a></li>
-                @if(Auth::user()->role === 0)
-                 <li><a href="/users">Alle gebruikers</a></li>
-                 <li><a href="/workshops">Alle Workshops</a></li>
+  <div class="wrapper">
+      <div id="wrapper">
+          <nav class="navbar navbar-inverse navbar-embossed navbar-lg museo-heading" role="navigation">
+            <div class="container">
+              <div class="navbar-header ">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+                  <span class="sr-only">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href="/">Know-brainer</a>
+              </div>
+              <div class="collapse navbar-collapse" id="navbar-collapse-01">
+                <ul class="nav navbar-nav navbar-left">
+                  <li {{ (Request::segment(1) == 'over-ons') ? 'class="active"' : '' }}><a href="/over-ons">Over ons</a></li>
+                  <li {{ (Request::segment(1) == 'workshop') ? 'class="active"' : '' }}><a href="/workshop">Workshops</a></li>
+                @if(!Auth::check())
+                  <li {{ (Request::segment(1) == 'login') ? 'class="active"' : '' }} ><a href="/login">Inloggen</a></li>
+                  <li {{ (Request::segment(1) == 'registreer') ? 'class="active"' : '' }} ><a href="/registreer">Registreren</a></li>
                 @endif
-                  <li class="divider"></li>
-                  <li><a href="/logout">Log out</a></li>
+
+                  <li>
+                    <!--Zoekbalk-->
+                    <form class="navbar-form" action="#" role="search">
+                      <div class="form-group">
+                        <div class="input-group">
+                          <input class="form-control" id="navbarInput-01" type="search" placeholder="Zoeken">
+                          <span class="input-group-btn">
+                            <button type="submit" class="btn"><span class="fui-search"></span></button>
+                          </span>
+                        </div>
+                      </div>
+                    </form>
+                  </li>
                 </ul>
-            </div>
-            @endif
+
+                @if(Auth::check())
+                <div class="btn-group navbar-nav navbar-right">
+                  <button data-toggle="dropdown" class="btn dropdown-toggle" type="button">
+                    <img src="{{ Auth::user()->avatar }}" width="30" height="30">{{{ Auth::user()->username }}}<span class="caret"></span>
+                  </button>
+                  <ul role="menu" class="dropdown-menu">
+                    <li><a href="/users/{{ Auth::user()->id }}">Mijn profiel</a></li>
+                    @if(Auth::user()->role === 0)
+                     <li><a href="/users">Alle gebruikers</a></li>
+                     <li><a href="/workshops">Alle Workshops</a></li>
+                    @endif
+                      <li class="divider"></li>
+                      <li><a href="/logout">Log out</a></li>
+                    </ul>
+                </div>
+                @endif
 
 
-          </div><!-- /.navbar-collapse -->
-        </div> <!--</div>-->
-      </nav><!-- /navbar -->
+              </div><!-- /.navbar-collapse -->
+            </div> <!--</div>-->
+          </nav><!-- /navbar -->
 
 
-                
 
-      <div class="container">
-        @yield('container')
-      </div> <!-- /container -->
+
+          <div class="container">
+            @yield('container')
+          </div> <!-- /container -->
+      </div>
+      <div class='push'></div>
   </div>
-  <div id='push'></div>
 
-    <footer class="palette-sun-flower">
+    <div class="footer">
+    <footer class="sitefooter palette-sun-flower">
       <div class="container ">
         <div class="row">
           <div class="col-xs-7 ">
@@ -111,7 +114,7 @@
         </div>
       </div>
     </footer>
-
+    </div>
     <script src="{{ URL::asset('js/vendor/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('js/flat-ui.min.js') }}"></script>
     <script src="{{ URL::asset('docs/assets/js/application.js') }}"></script>
