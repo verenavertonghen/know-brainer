@@ -3907,11 +3907,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
 }
 @media (min-width: 768px) {
   .navbar-collapse .navbar-nav.navbar-left:first-child {
-    margin-left: -21px;
-  }
-  .navbar-collapse .navbar-nav.navbar-left:first-child > li:first-child a {
-    border-bottom-left-radius: 6px;
-    border-top-left-radius: 6px;
+    margin-left: 0px;
   }
   .navbar-collapse .navbar-nav.navbar-right:last-child {
     margin-right: -21px;

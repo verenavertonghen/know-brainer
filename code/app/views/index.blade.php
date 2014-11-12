@@ -16,18 +16,13 @@
 	        	<p>Jij wil ook iets delen? Dat kan hier</p>
 	        </div>
         </div>
-        <div class="col-xs-4">
-        <div class="demo-headline">
-        <img src="{{ URL::asset('img/logo/yv1.png') }}" height="300px" alt=""/>
-        <h1 class="demo-logo">
-          <!--<div class="logo"></div>-->
-          Know-brainer
-        </h1>
-        <p class="lead">"Iedereen kan iets, niemand kan alles..</p>
-        <p class="lead">.. maar door kennis te delen, kunnen we onszelf en anderen iets leren.”</p>
-      </div>  <!--/demo-headline -->
+        <div class="col-xs-12">
+         <h2><a href="/workshop">Ik wil kennis..</a></h2>
+         <p>Zoek, schrijf je in, veel plezier &amp; vergeet geen kadotje</p>
+         <h2><a href="/workshop/create">.. delen</a></h2>
+         <p>Geef je op, vergeet de details niet, deel volop &amp; bedankt!</p>
         </div>
-        </div>
+      </div>
 
 
 @stop

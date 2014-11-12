@@ -5,7 +5,7 @@
 	</head>
 	<body>
 	<div style="font-family:Helvetica,Arial,sans-serif;">
-		<h1>Welkom op Know-brainer, {{ $username }}!  </h1>
+		<h1>Welkom op Know-brainer, {{{ $username }}}!  </h1>
 
         <img src="https://knowbrainer.be/img/logo/yv1.png" height="150px">
 
