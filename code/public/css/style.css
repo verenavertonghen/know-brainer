@@ -100,8 +100,9 @@ strong{
 }
 .workshop-item{
 	float: left;
-	width: 300px;
-	height: 200px;
+	width: 350px;
+	height: 250px;
+	position: relative;
 }
 
 
@@ -135,4 +136,10 @@ nav .btn-group img{
 
 #workshop-user{
 
+}
+
+.work-title{
+	position: absolute;
+	top: 180px;
+	background-color: rgba(255, 255, 255, 0.92);
 }
