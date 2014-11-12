@@ -10,8 +10,6 @@
 
             {{ Form::model($workshop, ['route' => ['workshop.update', $workshop->id], 'method' => 'PUT', 'files' => true]) }}
 
-               
-
                 <div class="form-group {{ ($error) ? 'has-error' : '' }}">
                     Komt te weten hoe {{ Form::text('title',null, array('class' => 'form-control login-field','placeholder' =>'Voer een titel in')) }}
                     {{ Form::label('title', ' ', array('class' => ''))}}
@@ -41,7 +39,7 @@
 
                 <div class="form-group {{ ($error) ? 'has-error' : '' }}">
                     <p>Wanneer?</p>
-                    {{ Form::text('date',null,array('class' => 'form-control login-field','placeholder' =>'15/02/2015')) }}
+                    {{ Form::text('date',' ',array('class' => 'form-control login-field','placeholder' =>'(bv. 15/02/2015)','id' => 'date')) }}
                     {{ Form::label('date', ' ', array('class' => '' ))}}
                     {{ $errors->first('date', '<span class="error">:message</span>')}}
                 </div>
@@ -83,6 +81,7 @@
 
                 <div class="form-group {{ ($error) ? 'has-error' : '' }}">
                     <p>Voeg eventueel een afbeelding toe</p>
+                    <label>Inspiratie nodig? Vind snel een afbeelding op <a href="http://www.pexels.com/" target="_blank">Pexels</a></label>
                      <img src="{{ $workshop->picture }}">
                     {{ Form::file('image') }}
                 </div>

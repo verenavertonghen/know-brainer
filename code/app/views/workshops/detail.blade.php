@@ -21,6 +21,7 @@
                     <a class="fui-facebook social-icon "href="#"><span class="icon-text lead"> Deel dit op Facebook</span></a>
                     <a class="fui-mail social-icon" href="mailto:?subject=Workshop:Kom%20te%20weten%20{{$workshop->title }}"><span class="icon-text lead"> Mail deze workshop</span></a>
         </div>
+
         <div class="col-xs-4">
             <h2>Details</h2>
             <p><strong>Categorie: </strong>{{ $workshop->category }}</p>
@@ -36,6 +37,9 @@
             <a class="btn btn-small btn-success" href="/workshop/{{$workshop->id}}/subscribe">subscribe</a>
             <a class="btn btn-small btn-danger" href="/workshop/{{$workshop->id}}/unsubscribe">unsubscribe</a>
             </div>
+
+        <div class="col-xs-3">
+            <a class="btn btn-small btn-info" href="/workshop/{{ $workshop->id }}/edit">Bewerk uw workshop</a>
         </div>
 
 
@@ -129,6 +133,7 @@
 
         </div>
         -->
+    </div>
     </div>
 <br>
 @stop
