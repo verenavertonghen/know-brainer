@@ -16,7 +16,7 @@
         <p><strong>Voorkennis: </strong>{{ $workshop->foreknowledge }}</p>
         </div>
         <div class="col-xs-3">
-        <img src="{{ URL::asset('img/icons/png/Retina-Ready.png') }}" alt="Foto"/>
+            <a class="btn btn-small btn-info" href="/workshop/{{ $workshop->id }}/edit">Bewerk uw workshop</a>
         </div>
     </div>
     @if(Auth::check())

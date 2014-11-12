@@ -197,9 +197,9 @@ class WorkshopController extends BaseController
                 $workshop->description = Input::get('description');
                 $workshop->category = Input::get('category');
                 $workshop->location = Input::get('location');
-                $workshop->date = DateTime::createFromFormat('d/m/Y', Input::get('date'));
-                $workshop->time = DateTime::createFromFormat('H:i', Input::get('time'));
-                $workshop->duration = DateTime::createFromFormat('i', Input::get('duration'));
+                $workshop->date = Input::get('date');
+                $workshop->time = Input::get('time');
+                $workshop->duration = Input::get('duration');
                 $workshop->requirements = Input::get('requirements');
                 $workshop->foreknowledge = Input::get('foreknowledge');
                 $workshop->subscribers_amount = Input::get('subscribers_amount');
@@ -207,7 +207,7 @@ class WorkshopController extends BaseController
                 $workshop->save();
             }
 
-            return Redirect::to('/workshop');
+            return Redirect::to('/workshop/'.$id);
         }
     }
 

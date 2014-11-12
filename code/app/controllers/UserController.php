@@ -162,8 +162,33 @@ class UserController extends \BaseController {
    				if (Input::hasFile('image')) {
         			$file            = Input::file('image');
         			$destinationPath = 'img/uploads/avatars/';
+        			list($x, $y) = getimagesize($file);
+        			$image = imagecreatefromjpeg($file) ; 
+
+					// horizontal rectangle
+					if ($x > $y) {
+					    $square = $y;              // $square: square side length
+					    $offsetX = ($x - $y) / 2;  // x offset based on the rectangle
+					    $offsetY = 0;              // y offset based on the rectangle
+					}
+					// vertical rectangle
+					elseif ($y > $x) {
+					    $square = $x;
+					    $offsetX = 0;
+					    $offsetY = ($y - $x) / 2;
+					}
+					// it's already a square
+					else {
+					    $square = $x;
+					    $offsetX = $offsetY = 0;
+					}
+					$endSize = 100;
+					$tn = imagecreatetruecolor($endSize, $endSize);
+					imagecopyresampled($tn, $image, 0, 0, $offsetX, $offsetY, $endSize, $endSize, $square, $square);
+
         			$filename        = str_random(6) . '_' . $file->getClientOriginalName();
-        			$uploadSuccess   = $file->move($destinationPath, $filename);
+        			//$uploadSuccess   = $file->move($destinationPath, $filename);
+        			imagejpeg($tn, $destinationPath.$filename, 100); 
     				$user->avatar 	 = '/'.$destinationPath.$filename;	 
     			}
 

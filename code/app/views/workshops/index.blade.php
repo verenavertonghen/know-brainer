@@ -12,10 +12,11 @@
                 <div class="workshop-div" style="background-image: url('{{ URL::asset($workshop->picture) }}'); background-size: 100% 100%">
 
                     <div class="row demo-row">
-                        <div class="col-xs-12" style="margin-top:80px;background-color: white;">
+                        <div class="col-xs-12" style="margin-top:70px;background-color: rgba(255, 255, 255, 0.92);">
                         <h3>... <span>{{ $workshop->title }}</span></h3>
                         <p class="lead">{{ $workshop->description }}</p>
                         <a>{{ link_to("/workshop/{$workshop->id}", "Meer info") }}</a>
+                        <div style="float:right"><a href="{{$workshop->user->id}}"><img src="{{$workshop->user->avatar}}" width="50" style="border-radius:50px"></a></div>
                         </div>
 
                         @if($workshop->picture != null)
