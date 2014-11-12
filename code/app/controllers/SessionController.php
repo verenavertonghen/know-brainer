@@ -44,7 +44,7 @@ class SessionController extends \BaseController {
 				return Redirect::back();
 			}
 			else{
-				return Redirect::back()->withInput();
+				return Redirect::back()->with('login_error', 'Deze gebruikersnaam en wachtwoord combinatie kennen we niet.')->withInput();
 			}
 		}
 	}

@@ -19,19 +19,32 @@ class RemindersController extends Controller {
 	 */
 	public function postRemind()
 	{
-		$response = Password::remind(Input::only('email'), 
+
+		$validator = Validator::make(
+            array('email' => Input::get('email')),
+            array('email' => 'required|email')
+        );
+
+        if ($validator->fails()) {
+            return Redirect::back()
+                ->withErrors($validator)
+                ->withInput(Input::all());
+        }
+        else{
+        	$response = Password::remind(Input::only('email'), 
 			function($message){
 				$message->subject('Wachtwoord wijzigen');
 			});
 
-		switch ($response)
-		{
-			case Password::INVALID_USER:
-				return Redirect::back()->with('error', Lang::get($response));
+			switch ($response)
+			{
+				case Password::INVALID_USER:
+					return Redirect::back()->with('error', Lang::get($response));
 
-			case Password::REMINDER_SENT:
-				return Redirect::back()->with('status', Lang::get($response));
-		}
+				case Password::REMINDER_SENT:
+					return Redirect::back()->with('success', Lang::get($response));
+			}
+        }	
 	}
 
 	/**
@@ -58,22 +71,36 @@ class RemindersController extends Controller {
 			'email', 'password', 'password_confirmation', 'token'
 		);
 
-		$response = Password::reset($credentials, function($user, $password)
-		{
-			$user->password = Hash::make($password);
+		$validator = Validator::make(
+            array('email' => Input::get('email'), 'password' => Input::get('password'), 'password_confirmation' => Input::get('password_confirmation')),
+            array('email' => 'required|email', 'password' => 'required|min:6|same:password_confirmation')
+        );
 
-			$user->save();
-		});
+        if ($validator->fails()) {
+            return Redirect::back()
+                ->withErrors($validator)
+                ->withInput(Input::except('password', 'password_confirmation'));
+        } else {
 
-		switch ($response)
-		{
-			case Password::INVALID_PASSWORD:
-			case Password::INVALID_TOKEN:
-			case Password::INVALID_USER:
-				return Redirect::back()->with('error', Lang::get($response));
+			$response = Password::reset($credentials, function($user, $password)
+			{
+				$user->password = Hash::make($password);
 
-			case Password::PASSWORD_RESET:
-				return Redirect::to('/');
+				$user->save();
+			});
+
+			switch ($response)
+			{
+				case Password::INVALID_PASSWORD:
+					return Redirect::back()->with('error-password', Lang::get($response));
+				case Password::INVALID_TOKEN:
+					return Redirect::back()->with('error-token', Lang::get($response));
+				case Password::INVALID_USER:
+					return Redirect::back()->with('error-user', Lang::get($response));
+
+				case Password::PASSWORD_RESET:
+					return Redirect::back()->with('success', Lang::get($response));
+			}
 		}
 	}
 

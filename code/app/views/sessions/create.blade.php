@@ -10,16 +10,23 @@
             <?php if($errors->any()) {
         		$error = true;
         	}?>
+
+        @if(isset($login_error))
+          <div class="msg-error">{{ $login_error }}</div>          
+        @endif
+
             {{ Form::open(['route' => 'sessions.store']) }}
             <div class="form-group {{ ($error) ? 'has-error' : '' }}">
                 {{ Form::text('username','', array('class' => 'form-control login-field','placeholder' =>'Voer uw gebruikersnaam in')) }}
             	{{ Form::label('username', ' ', array('class' => 'login-field-icon fui-user'))}}
+                {{ $errors->first('username', '<span class="error">:message</span>') }}
             </div>
 
 
             <div class="form-group {{ ($error) ? 'has-error' : '' }}">
                 {{ Form::password('password',array('class' => 'form-control login-field','placeholder' =>'Wachtwoord')) }}
                 {{ Form::label('password', ' ', array('class' => 'login-field-icon fui-lock' ))}}
+                {{ $errors->first('password', '<span class="error">:message</span>') }}
             </div>
 
             <label class="checkbox" for="remember_me">

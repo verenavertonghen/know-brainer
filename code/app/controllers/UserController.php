@@ -194,12 +194,12 @@ class UserController extends \BaseController {
 	public function destroy($id)
 	{
 		//Hard delete
-		/*
+		
 		Auth::logout();
 		if ($user->delete()) {
 			return Redirect::to('/');
     	}	
-    	*/
+    	
 	}
 
 
