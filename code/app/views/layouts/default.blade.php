@@ -110,7 +110,7 @@
     <script src="{{ URL::asset('js/vendor/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('js/flat-ui.min.js') }}"></script>
     <script src="{{ URL::asset('docs/assets/js/application.js') }}"></script>
-    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
 
     <script>
       videojs.options.flash.swf = "{{ URL::asset('dist/js/vendors/video-js.swf') }}"
