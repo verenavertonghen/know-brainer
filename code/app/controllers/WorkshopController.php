@@ -50,14 +50,14 @@ class WorkshopController extends BaseController
     {
         if (Auth::check()) {
             $rules = [
-                'title' => 'required',
-                'description' => 'required',
-                'category' => 'required',
+                'title'       => 'required',
+                'description' => 'required|max:250',
+                'category'    => 'required',
                 'location' => 'required',
                 'time' => 'required',
                 'date' => 'required',
-                'duration' => 'required',
-                'subscribers_amount' => 'required'
+                'duration' => 'required|numeric',
+                'subscribers_amount' => 'required|numeric'
             ];
 
             if (!$this->workshop->isValid(Input::all(), $rules)) {
@@ -91,6 +91,7 @@ class WorkshopController extends BaseController
                 $workshop->requirements = Input::get('requirements');
                 $workshop->foreknowledge = Input::get('foreknowledge');
                 $workshop->subscribers_amount = Input::get('subscribers_amount');
+                $workshop->fk_user = Auth::user()->id;
 
                 $workshop->save();
 
@@ -202,7 +203,6 @@ class WorkshopController extends BaseController
                 $workshop->requirements = Input::get('requirements');
                 $workshop->foreknowledge = Input::get('foreknowledge');
                 $workshop->subscribers_amount = Input::get('subscribers_amount');
-                $workshop->fk_user = Auth::user()->id;
 
                 $workshop->save();
             }
