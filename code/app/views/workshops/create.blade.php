@@ -96,7 +96,7 @@
                 <span>Voeg eventueel een afbeelding toe</span>
                 <label>Inspiratie nodig? Vind snel een afbeelding op <a href="http://www.pexels.com/" target="_blank">Pexels</a></label>
                 <div class="form-group {{ ($error) ? 'has-error' : '' }}">
-                    {{ Form::file('image', '', array('form-control login-field')) }} 
+                    {{ Form::file('image', '', array('form-control login-field','class' => 'btn btn-primary file-btn')) }}
                 </div>
 
                 <div class="form-group">

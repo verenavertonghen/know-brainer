@@ -3,41 +3,49 @@
 @section('container')
 
     <div class="row demo-row">
-        <div class="col-xs-9">
-        <h2>Kom te weten <span>{{ $workshop->title }}</span></h2>
-        <p class="lead">Beschrijving: {{ $workshop->description }}</p>
-        <p><strong>Categorie: </strong>{{ $workshop->category }}</p>
-        <p><strong>Locatie: </strong>{{ $workshop->location }}</p>
-        <p><strong>Max. aantal personen: </strong>{{ $workshop->subscribers_amount }}</p>
-        <p><strong>Wanneer: </strong>{{ $workshop->date }}</p>
-        <p><strong>Om hoe laat: </strong>{{ $workshop->time }}</p>
-        <p><strong>Duur: </strong>{{ $workshop->duration }}</p>
-        <p><strong>Benodigdheden: </strong>{{ $workshop->requirements }}</p>
-        <p><strong>Voorkennis: </strong>{{ $workshop->foreknowledge }}</p>
+        <div class="col-xs-8">
+                    <h2>Kom te weten <span>{{ $workshop->title }}</span></h2>
+                    <p class="lead">Beschrijving: {{ $workshop->description }}</p>
+                    <img src="{{ URL::asset('img/icons/png/Retina-Ready.png') }}" alt="Foto"/>
+                    <br/>
+
+                    @if(Auth::check())
+                    <?php
+                    $workshop_vote = Vote::where('fk_workshop', '=', $workshop->id)->where('fk_user', '=', Auth::user()->id)->get();
+                    echo ($workshop_vote->isEmpty()) ? '<a class="fui-heart social-icon" href="/workshop/'.$workshop->id.'/vote">'.$votes.'<span class="icon-text lead"> Vote</span></a>' : '<a  href="/workshop/'.$workshop->id.'/vote">Unvote </a>';
+
+                    ?>
+                    @else
+                        <p><a href="/login">Log in</a> of <a href="/registreer">maak een account aan</a> om deel te nemen</p>
+                    @endif
+                    <a class="fui-facebook social-icon "href="#"><span class="icon-text lead"> Deel dit op Facebook</span></a>
+                    <a class="fui-mail social-icon" href="mailto:?subject=Workshop:Kom%20te%20weten%20{{$workshop->title }}"><span class="icon-text lead"> Mail deze workshop</span></a>
         </div>
+
+        <div class="col-xs-4">
+            <h2>Details</h2>
+            <p><strong>Categorie: </strong>{{ $workshop->category }}</p>
+            <p><strong>Locatie: </strong>{{ $workshop->location }}</p>
+            <p><strong>Max. aantal personen: </strong>{{ $workshop->subscribers_amount }}</p>
+            <p><strong>Wanneer: </strong>{{ $workshop->date }}</p>
+            <p><strong>Om hoe laat: </strong>{{ $workshop->time }}</p>
+            <p><strong>Duur: </strong>{{ $workshop->duration }}</p>
+            <p><strong>Benodigdheden: </strong>{{ $workshop->requirements }}</p>
+            <p><strong>Voorkennis: </strong>{{ $workshop->foreknowledge }}</p>
+
+            <div>
+            <a class="btn btn-small btn-success" href="/workshop/{{$workshop->id}}/subscribe">subscribe</a>
+            <a class="btn btn-small btn-danger" href="/workshop/{{$workshop->id}}/unsubscribe">unsubscribe</a>
+            </div>
+
         <div class="col-xs-3">
             <a class="btn btn-small btn-info" href="/workshop/{{ $workshop->id }}/edit">Bewerk uw workshop</a>
         </div>
-    </div>
-    @if(Auth::check())
-        <a href="/workshop/{{$workshop->id}}/subscribe">subscribe</a>
-        <a href="/workshop/{{$workshop->id}}/unsubscribe">unsubscribe</a>
-        <?php
-            $workshop_vote = Vote::where('fk_workshop', '=', $workshop->id)->where('fk_user', '=', Auth::user()->id)->get();
-            echo ($workshop_vote->isEmpty()) ? '<a href="/workshop/'.$workshop->id.'/vote">Vote </a>' : '<a href="/workshop/'.$workshop->id.'/vote">Unvote </a>';
-            echo $votes;
-            ?>
-    @else 
-        <p><a href="/login">Log in</a> of <a href="/registreer">maak een account aan</a> om deel te nemen</p>
-    @endif
 
-    <div id="sharing">
-        <a href="#">Deel dit op Facebook</a>
-        <br>
-        <a href="mailto:?subject=Workshop:Kom%20te%20weten%20{{$workshop->title }}">Mail deze workshop</a>
+
     </div>
 
-    <h1>Organisator</h1>
+    <h5>Organisator</h5>
     <div class="row">
         <div id="workshop-user">
         <div class="col-xs-2">
@@ -48,36 +56,49 @@
             <p><span  class="lead">{{ $workshop->user->about }}</span>
             <br/>
             </p>
-            <p>{{ ($workshop->user->facebook == '') ? '' : '<a href="http://www.facebook.com/'.$workshop->user->facebook.'" target="_blank" class="fb-btn btn btn-info btn-lg btn-block">Facebook</a>' }}</p>
+            <p>{{ ($workshop->user->facebook == '') ? '' : '<a  class="btn btn-small btn-info" href="http://www.facebook.com/'.$workshop->user->facebook.'" target="_blank" class="fb-btn btn btn-info btn-lg btn-block">Facebook</a>' }}</p>
         </div>
         </div>
     </div>
 
     @if(count($workshop->subscribers) > 0)
-        <h1>Deelnemers</h1>
-        @foreach($workshop->subscribers as $subscriber)
+        <h5>Deelnemers</h5>
         <div class="row">
-            <div id="workshop-user">
-            <div class="col-xs-2">
-                   <img class="img-circle" src="{{$subscriber->avatar}}" width="125px" alt=""/>
-            </div>
-            <div class="col-xs-10">
-                <strong><p>{{ $subscriber->username  }}</p></strong>
-                <p><span  class="lead">{{ $subscriber->about }}</span>
-                <br/>
-                </p>
-                <p>{{ ($subscriber->facebook == '') ? '' : '<a href="http://www.facebook.com/'.$subscriber->facebook.'" target="_blank" class="fb-btn btn btn-info btn-lg btn-block">Facebook</a>' }}</p>
-            </div>
-            </div>
-        </div>
-        @endforeach
-    @endif
+        @foreach($workshop->subscribers as $subscriber)
 
+            <div id="workshop-user">
+            <div class="col-xs-1">
+                   <img class="img-circle" src="{{$subscriber->avatar}}" width="75px" alt=""/>
+            </div>
+            <div class="col-xs-1">
+                <p>{{ $subscriber->username  }}</p>
+            </div>
+            </div>
+
+        @endforeach
+        </div>
+    @endif
 
     <hr>
 
     <div id="comments">
-        <h3>Reacties</h3>
+        <h2>Reacties</h2>
+        @if(Auth::check())
+            {{ Form::open(array('action' => 'CommentController@store')) }}
+
+            <div class="form-group">
+            {{ Form::textarea('comment', Input::old('comment'), array('class' => 'form-control','placeholder' =>'Laat weten wat je ervan vindt')) }}
+            {{ Form::hidden('fk_workshop', Request::segment(2)) }}
+            </div>
+
+            {{ Form::submit('Reageren', array('class' => 'btn btn-primary')) }}
+
+            {{ Form::close() }}
+
+        @else
+            <p><a href="/login">Log in</a> om een reactie toe te voegen.</p>
+        @endif
+        <br/>
         @if(!$comments->isEmpty())
             @foreach($comments as $key => $value)
         <div class="comment-div">
@@ -107,20 +128,12 @@
             <p>Er heeft nog niemand een reactie geplaatst.</p>
         @endif
 
-        @if(Auth::check())
-            {{ Form::open(array('action' => 'CommentController@store')) }}
-            
-            <div class="form-group">
-            {{ Form::textarea('comment', Input::old('comment'), array('class' => 'form-control','placeholder' =>'Laat weten wat je ervan vindt')) }}
-            {{ Form::hidden('fk_workshop', Request::segment(2)) }}
-            </div>
+        <!--
+        <div class="pagination">
 
-            {{ Form::submit('Reageren', array('class' => 'btn btn-primary')) }}
-
-            {{ Form::close() }}
-        @else
-            <p><a href="/login">Log in</a> om een reactie toe te voegen.</p>
-        @endif
+        </div>
+        -->
+    </div>
     </div>
 <br>
 @stop
