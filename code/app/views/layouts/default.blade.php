@@ -94,13 +94,12 @@
         <div class="row">
           <div class="col-xs-7 ">
             <h3 class="">Know-brainer</h3>
-            <!--
-            <p>Volg ons op:</p>
-            <a class="fui-facebook" href=""></a>
-            <a class="fui-twitter" href=""></a>
-            <a class="fui-youtube" href=""></a>
-            <a class="fui-vimeo" href=""></a>
-            -->
+
+            <a class="fui-facebook social-icon" href=""></a>
+            <a class="fui-twitter social-icon" href=""></a>
+            <a class="fui-youtube social-icon" href=""></a>
+            <a class="fui-vimeo social-icon" href=""></a>
+
           </div> <!-- /col-xs-7 -->
           <!--
           <div class="col-xs-5 ">
