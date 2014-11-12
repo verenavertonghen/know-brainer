@@ -7,6 +7,30 @@ class CommentController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+
+    /*
+    protected $comment;
+
+    public function __construct(Comment $comment)
+    {
+        $this->comment = $comment;
+    }
+
+    public function all()
+    {
+        //check if ADMIN is logged in
+        if (Auth::check()) {
+            //return all workshops with pagination
+            $comments = $this->comment->with('user')->paginate(10);
+            $view = View::make('workshop.detail')->with('comments', $comments);
+        } else {
+            $view = Redirect::to('/');
+        }
+
+        return $view;
+    }
+    */
+
 	public function store()
 	{
 		 $rules = array(

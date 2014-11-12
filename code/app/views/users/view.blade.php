@@ -39,9 +39,8 @@ $ownprofile = false;
             <p>
                 {{ ($user->facebook == '') ? '' : '<a class="fui-facebook social-icon" href="http://www.facebook.com/'.$user->facebook.'"></a></li>' }}
                 {{ ($user->twitter == '') ? '' : '<a class="fui-twitter social-icon" href="http://www.twitter.com/'.$user->twitter.'"></a></li>' }}
-                {{ ($user->github == '') ? '' : '<a class="fui-github social-icon" href="http://www.github.com/'.$user->github.'"></a></li>' }}
-                {{ ($user->website == '') ? '' : '<a class="fui-link social-icon" href="http://'.$user->website.'"></a></li>' }}
-                {{ ($user->youtube == '') ? '' : '<a class="fui-youtube social-icon" href="http://youtube.com/'.$user->youtube.'"></a></li>' }}
+                {{ ($user->youtube == '') ? '' : '<a class="fui-youtube social-icon" href="http://www.youtube.com/'.$user->youtube.'"></a></li>' }}
+                {{ ($user->website == '') ? '' : '<a class="fui-link social-icon" href="http://wwww'.$user->website.'"></a></li>' }}
             </p>
 		</div>
 		<div class="col-xs-1">

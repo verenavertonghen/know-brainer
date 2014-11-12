@@ -86,7 +86,7 @@
 
                 <p>Voeg eventueel een afbeelding toe</p>
                 <div class="form-group {{ ($error) ? 'has-error' : '' }}">
-                    {{ Form::file('image', '', array('form-control login-field')) }} 
+                    {{ Form::file('image', '', array('form-control login-field','class' => 'btn btn-primary file-btn')) }}
                 </div>
 
                 <div class="form-group">
