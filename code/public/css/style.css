@@ -100,7 +100,7 @@ strong{
 }
 .workshop-item{
 	float: left;
-	width: 350px;
+	width: 370px;
 	height: 250px;
 	position: relative;
 }
@@ -134,12 +134,44 @@ nav .btn-group img{
     margin-left: 2px;
 }
 
-#workshop-user{
-
+#sharing{
+	margin-left: -15px;
 }
+
+#sharing div:nth-child(2){
+	text-align: right;
+}
+
 
 .work-title{
 	position: absolute;
 	top: 180px;
 	background-color: rgba(255, 255, 255, 0.92);
+}
+
+
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -4em;
+}
+.footer, .push {
+    height: 4em;
+}
+
+
+#brand .col-xs-8{
+	margin-top: 70px;
+	margin-left: -10px;
+}
+
+#brand{
+	margin-bottom: 10px;
 }
