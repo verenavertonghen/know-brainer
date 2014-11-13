@@ -53,6 +53,10 @@ h1, h2, h3, h4, h5 {
 	font-family: museo-heading !important;
 }
 
+h1{
+    color: #1abc9c;
+}
+
 strong{
 	font-family: museo-heading !important;
 }
@@ -75,7 +79,8 @@ strong{
 .workshop-div{
     
     /*background: #F1C40F;*/
-    background: #ECF0F1;
+    /*background: #ECF0F1;*/
+    background: #1abc9c;
     padding: 0px 40px;
     margin: 20px 0px;
     border-radius: 6px;
@@ -145,6 +150,7 @@ nav .btn-group img{
 
 .work-title{
 	position: absolute;
+    padding: 5px;
 	top: 180px;
 	background-color: rgba(255, 255, 255, 0.92);
 }
@@ -174,4 +180,8 @@ html, body {
 
 #brand{
 	margin-bottom: 10px;
+}
+
+.detail-btn{
+    margin: 10px 0px;
 }

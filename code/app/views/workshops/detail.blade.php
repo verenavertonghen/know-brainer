@@ -6,7 +6,7 @@
         <div class="col-xs-8">
                     <h2>Kom te weten <span>{{ $workshop->title }}</span></h2>
                     <p class="lead">Beschrijving: {{ $workshop->description }}</p>
-                    <img src="{{ URL::asset('img/icons/png/Retina-Ready.png') }}" alt="Foto"/>
+                    <img src="{{ URL::asset($workshop->picture) }}" alt="Foto" style="width:100%;"/>
                     <br/>
 
                     @if(Auth::check())
@@ -33,34 +33,38 @@
             <p><strong>Benodigdheden: </strong>{{ $workshop->requirements }}</p>
             <p><strong>Voorkennis: </strong>{{ $workshop->foreknowledge }}</p>
 
-            <div>
+            <div class="detail-btn">
             <a class="btn btn-small btn-success" href="/workshop/{{$workshop->id}}/subscribe">subscribe</a>
+            </div>
+            <div class="detail-btn">
             <a class="btn btn-small btn-danger" href="/workshop/{{$workshop->id}}/unsubscribe">unsubscribe</a>
             </div>
-
-        <div class="col-xs-3">
+            <div class="detail-btn">
             <a class="btn btn-small btn-info" href="/workshop/{{ $workshop->id }}/edit">Bewerk uw workshop</a>
-        </div>
+            </div>
 
-
-    </div>
-
-    <h5>Organisator</h5>
-    <div class="row">
-        <div id="workshop-user">
-        <div class="col-xs-2">
-               <img class="img-circle" src="{{$workshop->user->avatar}}" width="125px" alt=""/>
-        </div>
-        <div class="col-xs-10">
-            <strong><p>{{ $workshop->user->username }}</p></strong>
-            <p><span  class="lead">{{ $workshop->user->about }}</span>
-            <br/>
-            </p>
-            <p>{{ ($workshop->user->facebook == '') ? '' : '<a  class="btn btn-small btn-info" href="http://www.facebook.com/'.$workshop->user->facebook.'" target="_blank" class="fb-btn btn btn-info btn-lg btn-block">Facebook</a>' }}</p>
-        </div>
         </div>
     </div>
 
+    <div class="row demo-row">
+        <h2>Organisator</h2>
+        <div class="row">
+            <div id="workshop-user">
+            <div class="col-xs-2">
+                   <img class="img-circle" src="{{$workshop->user->avatar}}" width="150px" alt=""/>
+            </div>
+            <div class="col-xs-10">
+                <strong><p>{{ $workshop->user->username }}</p></strong>
+                <p><span  class="lead">{{ $workshop->user->about }}</span>
+                <br/>
+                </p>
+                <p>{{ ($workshop->user->facebook == '') ? '' : '<a  class="btn btn-small btn-info" href="http://www.facebook.com/'.$workshop->user->facebook.'" target="_blank" class="fb-btn btn btn-info btn-lg btn-block">Facebook</a>' }}</p>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row demo-row">
     @if(count($workshop->subscribers) > 0)
         <h5>Deelnemers</h5>
         <div class="row">
@@ -78,6 +82,7 @@
         @endforeach
         </div>
     @endif
+    </div>
 
     <hr>
 

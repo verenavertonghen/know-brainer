@@ -186,7 +186,7 @@ class UserController extends \BaseController {
 					$tn = imagecreatetruecolor($endSize, $endSize);
 					imagecopyresampled($tn, $image, 0, 0, $offsetX, $offsetY, $endSize, $endSize, $square, $square);
 
-        			$filename        = str_random(6) . '_' . $file->getClientOriginalN
+        			$filename        = str_random(6) . '_' . $file->getClientOriginalName();
         			imagejpeg($tn, $destinationPath.$filename, 100); 
     				$user->avatar 	 = '/'.$destinationPath.$filename;	 
     			}

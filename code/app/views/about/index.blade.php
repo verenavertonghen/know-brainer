@@ -16,7 +16,7 @@
       </div>  <!--/demo-headline -->
 
       <h3>Veel gestelde vragen</h3>
-      <h4>Een kadotje?</h4>
+      <h5>Een kadotje?</h5>
       <p>Je bent na een workshop iets te weten gekomen dankzij de organisator en dat verdient een bedankje. Net zoals bij de kennis, kan dit kadotje ook zeer breed of specifiek bekeken worden. </p>
       
 @stop

@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('title', 'Workshop aanmaken')
 @section('container')
-<h1 class="text-primary">Maak een workshop</h1>
+<h1 class="">Maak een workshop</h1>
 
 @if(Auth::check())
 <?php $error = false; ?>

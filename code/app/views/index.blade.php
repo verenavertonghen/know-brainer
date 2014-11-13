@@ -4,7 +4,7 @@
       
     <div class="row" id="brand">
     <div class="col-xs-4">
-        <img class="kb-logo" src="img/logo.png">
+        <img class="kb-logo" src="img/logo/yv2.png">
     </div>
     <div class="col-xs-8">
         <p class="lead">"Iedereen kan iets, niemand kan alles..</p>
@@ -13,15 +13,17 @@
     </div>
 
       <div class="row">
-
+        <div class="col-xs-12">
+        <h1 class="">Kom te weten.. </h1>
+        </div>
         <div class="col-xs-12">
         @foreach($workshops as $key => $value)
 	        <div class="workshop-item">
             <a href="/workshop/{{ $value->id }}">
                 <div class="work-title museo-heading">
-                {{{$value->title}}}
+                <p>...{{{$value->title}}}</p>
                 </div>
-	        	<img src="{{$value->picture}}" width="350">
+	        	<img src="{{$value->picture}}" width="370px">
             </a>
 	        </div>
         @endforeach
@@ -30,7 +32,7 @@
                 <div class="work-title museo-heading">
                 U wil ook iets delen? Dat kan hier
                 </div>
-                <img src="img/uploads/workshops/default-workshop.png" width="370">
+                <img src="img/uploads/workshops/default-workshop.png" width="370px">
             </a>
             </div>
 	        	

@@ -13,7 +13,7 @@
 		<h2>We vinden het fantastisch dat je je kennis wilt delen!</h2>
 		<p>We zetten de belangrijkste gegevens nog even op een rijtje:</p>
 
-		<h3>Kom te weten{{{ $title }}}</h3>
+		<h3>Kom te weten {{{ $title }}}</h3>
         <p><strong>Beschrijving: </strong>{{{ $description }}}</p>
         <p><strong>Categorie: </strong>{{{ $category }}}</p>
         <p><strong>Locatie: </strong>{{ $location }}}</p>

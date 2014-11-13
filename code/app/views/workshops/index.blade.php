@@ -5,7 +5,7 @@
     <div class="row demo-row">
         <div class="row demo-row">
             <div class="col-xs-8">
-                <h1 class="text-primary">Kom te weten..</h1>
+                <h1 class="">Kom te weten..</h1>
 
             @if($workshops->count())
                 @foreach($workshops as $workshop)
