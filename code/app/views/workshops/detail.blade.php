@@ -5,7 +5,7 @@
     <div class="row demo-row">
         <div class="col-xs-8">
                     <h2>Kom te weten <span>{{ $workshop->title }}</span></h2>
-                    <p class="lead">Beschrijving: {{ $workshop->description }}</p>
+                    <p class="lead">{{ $workshop->description }}</p>
                     <img src="{{ URL::asset($workshop->picture) }}" alt="Foto" style="width:100%;"/>
                     <br/>
 
@@ -33,16 +33,24 @@
             <p><strong>Benodigdheden: </strong>{{ $workshop->requirements }}</p>
             <p><strong>Voorkennis: </strong>{{ $workshop->foreknowledge }}</p>
 
-            <div class="detail-btn">
-            <a class="btn btn-small btn-success" href="/workshop/{{$workshop->id}}/subscribe">subscribe</a>
-            </div>
-            <div class="detail-btn">
-            <a class="btn btn-small btn-danger" href="/workshop/{{$workshop->id}}/unsubscribe">unsubscribe</a>
-            </div>
-            <div class="detail-btn">
-            <a class="btn btn-small btn-info" href="/workshop/{{ $workshop->id }}/edit">Bewerk uw workshop</a>
-            </div>
-
+            @if(Auth::check())
+            @foreach($workshop->subscribers as $subscriber)
+                @if($subscriber->id == Auth::user()->id)
+                    <div class="detail-btn">
+                    <a class="btn btn-small btn-danger" href="/workshop/{{$workshop->id}}/unsubscribe">Neem niet meer deel</a>
+                    </div>
+                @else
+                    <div class="detail-btn">
+                    <a class="btn btn-small btn-success" href="/workshop/{{$workshop->id}}/subscribe">Neem deel</a>
+                    </div>
+                @endif
+                    @if(Auth::user()->id == $workshop->user->id)
+                    <div class="detail-btn">
+                        <a class="btn btn-small btn-info" href="/workshop/{{ $workshop->id }}/edit">Bewerk uw workshop</a>
+                    </div>
+                    @endif
+            @endforeach
+            @endif
         </div>
     </div>
 
